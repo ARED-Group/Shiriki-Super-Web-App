@@ -8,8 +8,6 @@ import { faQuestion, faUtensils, faPersonWalkingDashedLineArrowRight, faClipboar
 } from "@fortawesome/free-solid-svg-icons"
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons"
 
-
-
 const Home = () => {
   const services = [
     { name: 'Food Ordering',icon: <FontAwesomeIcon icon ={faUtensils} style={{ color: '#FBA4D3', }} size="xs"/>},
