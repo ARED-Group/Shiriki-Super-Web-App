@@ -30,7 +30,6 @@ const Welcome = () => {
         </div>
         <Footer />
       </div>
-      <div className="login-container min-h-screen flex items-center justify-center"></div>
     </>
   );
 };
