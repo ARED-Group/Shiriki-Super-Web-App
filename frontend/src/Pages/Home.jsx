@@ -56,6 +56,8 @@ const Home = () => {
       name: "Need Help",
       icon: <FontAwesomeIcon icon={faQuestion} style={{ color: "#4285F4" }} />,
     },
+   
+    
   ];
 
   const recents = [
@@ -65,9 +67,9 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col h-screen">
+    <div className="flex flex-col">
       <Header />
-      <main className="flex flex-col bg-gray-100 p-6 md:p-2">
+      <main className="flex flex-col bg-gray-100 p-6 md:p-2 h-min">
         {/* <div
           className="lg:block bg-cover bg-center h-64 md:h-96 border border-black"
           style={{ backgroundImage: "url(/your-hero-image.jpg)" }}
@@ -78,7 +80,7 @@ const Home = () => {
             </h1>
           </div>
         </div> */}
-        <div className="w-full lg:h-64 h-32 shadow-md">
+        <div className="w-full h-min shadow-md">
           <Carousel />
         </div>
         <div className="p-6">
