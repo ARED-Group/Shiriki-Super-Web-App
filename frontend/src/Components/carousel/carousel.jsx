@@ -46,7 +46,7 @@ const Carousel = () => {
               <img
                 src={image}
                 alt=""
-                className="h-32 lg:h-64 w-full lg:w-9/12"
+                className="h-32 lg:h-96 w-full lg:w-9/12"
               />
             </div>
           </div>
