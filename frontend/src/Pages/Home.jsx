@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../Components/Header";
 import ServicesSection from "../Components/ServicesSection";
 import Recents from "../Components/Recents";
@@ -13,8 +13,28 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import Carousel from "../Components/carousel/carousel";
+import { auth, db } from "../Components/Firebase/firebase";
+import { doc, getDoc } from "firebase/firestore";
 
 const Home = () => {
+  // const fetchUserData = async () => {
+  //   auth.onAuthStateChanged(async (user) => {
+  //     console.log(user);
+
+  //     const docRef = doc(db, "Users", user.uid);
+  //     const docSnap = await getDoc(docRef);
+  //     if (docSnap.exists()) {
+  //       console.log(docSnap.data());
+  //     } else {
+  //       console.log("User is not logged in");
+  //     }
+  //   });
+  // };
+
+  // useEffect(() => {
+  //   fetchUserData();
+  // }, []);
+
   const services = [
     {
       name: "Food Ordering",
