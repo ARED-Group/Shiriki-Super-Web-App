@@ -17,7 +17,7 @@ const SignInWithGoogle = () => {
 
       const user = result.user;
       if (user) {
-        window.location.href = "/homepage";
+        window.location.href = "/services";
       }
     } catch (error) {
       if (error.code === "auth/cancelled-popup-request") {
