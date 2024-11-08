@@ -110,12 +110,10 @@ const Login = () => {
               </label>
 
               <div className="!mt-8">
-<<<<<<< HEAD
-               <Link to='/verification'>
+               {/* <Link to='/verification'>
                 <button 
                     type="submit" 
-                    className={`h-12 px-6 m-2 py-3 px-2 text-sm font-semibold tracking-wide rounded-full text-white ${agreeToTerms ? 'bg-[#002D74] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`}
-=======
+                    className={`h-12 px-6 m-2 py-3 px-2 text-sm font-semibold tracking-wide rounded-full text-white ${agreeToTerms ? 'bg-[#002D74] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`} */}
                 <Link to="/services">
                   <button
                     type="submit"
@@ -124,7 +122,6 @@ const Login = () => {
                         ? "bg-[#002D74] cursor-pointer"
                         : "bg-gray-400 cursor-not-allowed"
                     }`}
->>>>>>> c5c4a76a4a4f3f7b4b392b7c185f29d1926a0102
                     disabled={!agreeToTerms}
                   >
                     Connect
