@@ -1,20 +1,42 @@
+<<<<<<< HEAD
+=======
+// import React from 'react';
+// import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
+// import './App.css';
+// import { I18nextProvider } from 'react-i18next';
+// import './Components/i18n';
+// import AppRoutes from './Routes/routes';
 
-import React from 'react';
-import { BrowserRouter } from 'react-router-dom';
-import './App.css';
-import { I18nextProvider } from 'react-i18next';
-import i18n from './Components/i18n';
-import AppRoutes from './Routes/routes';
+// function App() {
+//   return (
+//     <div className="App bg-[#002D74]">
+//       <BrowserRouter> {/* Wrap Routes inside BrowserRouter */}
+//         <AppRoutes /> {/* This renders the  main routes */}
+//       </BrowserRouter>
+//     </div>
+//   );
+// }
+
+// export default App;
+>>>>>>> c5c4a76a4a4f3f7b4b392b7c185f29d1926a0102
+
+import React from "react";
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./Components/i18n";
+import AppRoutes from "./Routes/routes";
+import { TimeProvider } from "./context/WifiTimeContext";
 
 function App() {
   return (
-    <I18nextProvider i18n={i18n}>
-      <div className="App bg-[#002D74]">
+    <TimeProvider>
+      <div className="App bg-slate-800 h-screen ">
         <BrowserRouter>
           <AppRoutes />
         </BrowserRouter>
       </div>
-    </I18nextProvider>
+    </TimeProvider>
   );
 }
 

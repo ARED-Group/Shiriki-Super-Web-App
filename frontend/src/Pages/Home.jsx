@@ -1,6 +1,5 @@
-
 import React from "react";
-import Header from "../Components/Header";
+
 import ServicesSection from "../Components/ServicesSection";
 import Recents from "../Components/Recents";
 import BottomNavBar from "../Components/BottomNavBar";
@@ -65,20 +64,9 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col h-screen">
-      <Header />
-      <main className="flex flex-col bg-gray-100 p-6 md:p-2">
-        {/* <div
-          className="lg:block bg-cover bg-center h-64 md:h-96 border border-black"
-          style={{ backgroundImage: "url(/your-hero-image.jpg)" }}
-        >
-          <div className="flex items-center justify-center h-full bg-black bg-opacity-50">
-            <h1 className="text-white text-4xl md:text-6xl font-bold">
-              Welcome to Our Digital Platform
-            </h1>
-          </div>
-        </div> */}
-        <div className="w-full lg:h-64 h-32 shadow-md">
+    <div className="flex flex-col">
+      <main className="flex flex-col bg-gray-100 p-6 md:p-2 h-min">
+        <div className="w-full h-min shadow-md">
           <Carousel />
         </div>
         <div className="p-6">
@@ -86,7 +74,6 @@ const Home = () => {
           <ServicesSection title="Our Services" services={services} />
         </div>
       </main>
-      <BottomNavBar />
     </div>
   );
 };
