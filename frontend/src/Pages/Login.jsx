@@ -110,6 +110,10 @@ const Login = () => {
               </label>
 
               <div className="!mt-8">
+               {/* <Link to='/verification'>
+                <button 
+                    type="submit" 
+                    className={`h-12 px-6 m-2 py-3 px-2 text-sm font-semibold tracking-wide rounded-full text-white ${agreeToTerms ? 'bg-[#002D74] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`} */}
                 <Link to="/services">
                   <button
                     type="submit"
