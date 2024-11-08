@@ -53,7 +53,7 @@ const WifiTimeStepper = ({ onClose }) => {
       </div>
 
       {/* Step content */}
-      <div className="flex-1 mb-6 p-4 bg-white rounded-sm text-black w-full">
+      <div className="flex-1 mb-6 p-4 bg-slate-100 rounded-sm text-black w-full">
         <h3 className="text-lg font-semibold">
           Step {activeStep + 1}: {steps[activeStep]}
         </h3>

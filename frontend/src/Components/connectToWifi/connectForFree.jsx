@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { BiWifi } from "react-icons/bi";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
@@ -7,15 +7,15 @@ import freeWifi from "./../../assets/images/freeWifi.png";
 import freeBundleExhasuted from "./../../assets/images/ConnectForFree.png";
 import WifiTimeStepper from "./WifiTimeStepper";
 import { Link } from "react-router-dom";
+import { TimeContext } from "../../context/WifiTimeContext";
 
 Modal.setAppElement("#root");
 
 const ConnectForFree = () => {
-  const [timeLeft, setTimeLeft] = useState(0);
-  const [isConnected, setIsConnected] = useState(false);
+  const { timeLeft, isConnected, startTimer, stopTimer } =
+    useContext(TimeContext);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showStepper, setShowStepper] = useState(false);
-
   const navigate = useNavigate();
 
   const formatTime = (seconds) => {
@@ -26,18 +26,8 @@ const ConnectForFree = () => {
       .padStart(2, "0")}`;
   };
 
-  useEffect(() => {
-    if (timeLeft > 0) {
-      const timerId = setInterval(() => {
-        setTimeLeft((prev) => prev - 1);
-      }, 1000);
-      return () => clearInterval(timerId);
-    }
-  }, [timeLeft]);
-
   const handleConnect = () => {
-    setIsConnected(true);
-    setTimeLeft(0.1 * 60); // Start countdown based on time
+    startTimer(0.1 * 60); // Start countdown based on time
   };
 
   const handleLogout = () => {
@@ -46,8 +36,7 @@ const ConnectForFree = () => {
 
   const confirmLogout = () => {
     setShowLogoutModal(false);
-    setIsConnected(false);
-    setTimeLeft(0);
+    stopTimer();
     navigate("/");
   };
 
@@ -57,9 +46,8 @@ const ConnectForFree = () => {
 
   const closeStepper = () => {
     setShowStepper(false);
-    setTimeLeft(0.1 * 60); // Set the new countdown time after the stepper
+    startTimer(0.1 * 60); // Set new countdown time after the stepper
   };
-
   return (
     <div className="flex flex-col w-96 h-full items-center justify-between py-1">
       <Modal

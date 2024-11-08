@@ -4,8 +4,8 @@ import { BiWifi } from "react-icons/bi";
 const BottomNavBar = () => {
   return (
     <div className="flex justify-between items-center">
-      <Link to="/comingSoon" className="flex flex-col items-center">
-        <div className="items-center justify-between">
+      <Link to="/services" className="flex flex-col items-center">
+        <div className="flex flex-col items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -24,7 +24,7 @@ const BottomNavBar = () => {
         </div>
       </Link>
       <Link to="/comingSoon" className="flex flex-col items-center">
-        <div className="items-center justify-between">
+        <div className="flex flex-col items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -43,7 +43,7 @@ const BottomNavBar = () => {
         </div>
       </Link>
       <Link to="/comingSoon" className="flex flex-col items-center">
-        <div>
+        <div className="flex flex-col items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -68,7 +68,7 @@ const BottomNavBar = () => {
         </div>
       </Link>
       <Link to="/comingSoon" className="flex flex-col items-center">
-        <div>
+        <div className="flex flex-col items-center">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

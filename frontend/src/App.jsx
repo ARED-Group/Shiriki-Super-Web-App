@@ -20,8 +20,6 @@
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./App.css";
-import { I18nextProvider } from "react-i18next";
-import i18n from "./Components/i18n";
 import AppRoutes from "./Routes/routes";
 import { TimeProvider } from "./context/WifiTimeContext";
 

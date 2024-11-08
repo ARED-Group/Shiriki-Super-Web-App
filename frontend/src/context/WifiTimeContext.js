@@ -1,24 +1,36 @@
 // TimeContext.js
-import React, { createContext, useState, useContext } from "react";
+import React, { createContext, useState, useEffect } from "react";
 
-// Create a context for the time state
-const TimeContext = createContext();
+export const TimeContext = createContext();
 
-// Custom hook to use the TimeContext
-export const useTimeContext = () => {
-  return useContext(TimeContext);
-};
-
-// TimeProvider component to wrap around the app
 export const TimeProvider = ({ children }) => {
   const [timeLeft, setTimeLeft] = useState(0);
+  const [isConnected, setIsConnected] = useState(false);
 
-  const setTime = (timeInMinutes) => {
-    setTimeLeft(timeInMinutes * 60); // Convert minutes to seconds
+  useEffect(() => {
+    let timerId;
+    if (timeLeft > 0) {
+      timerId = setInterval(() => {
+        setTimeLeft((prev) => prev - 1);
+      }, 1000);
+    }
+    return () => clearInterval(timerId);
+  }, [timeLeft]);
+
+  const startTimer = (seconds) => {
+    setTimeLeft(seconds);
+    setIsConnected(true);
+  };
+
+  const stopTimer = () => {
+    setTimeLeft(0);
+    setIsConnected(false);
   };
 
   return (
-    <TimeContext.Provider value={{ timeLeft, setTime }}>
+    <TimeContext.Provider
+      value={{ timeLeft, setTimeLeft, isConnected, startTimer, stopTimer }}
+    >
       {children}
     </TimeContext.Provider>
   );

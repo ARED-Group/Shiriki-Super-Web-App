@@ -64,8 +64,8 @@ const Home = () => {
   ];
 
   return (
-    <div className="flex flex-col">
-      <main className="flex flex-col bg-gray-100 p-6 md:p-2 h-min">
+    <div className="flex flex-col h-screen">
+      <main className="flex flex-col bg-slate-100 h-full p-6 md:p-2">
         <div className="w-full h-min shadow-md">
           <Carousel />
         </div>
