@@ -44,7 +44,7 @@ const AdModal = ({ onClose }) => {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg text-center">
-        <h2 className="text-xl font-bold">Watch this Ad to access Wi-Fi</h2>
+        <h2 className="text-xl font-bold">Watch this Ad to access</h2>
         <div className="relative"> {/* Container for positioning */}
           <video width="320" height="240" autoPlay >
             <source src="video/Ad.mp4" type="video/mp4" />
