@@ -37,7 +37,7 @@ const AdModal = ({ onClose }) => {
     setLoading(true);
     setTimeout(() => {
       onClose();
-      navigate('/homepage');
+      navigate('/services');
     }, 2000); //loading for 2 seconds before navigating
   };
 
@@ -47,7 +47,7 @@ const AdModal = ({ onClose }) => {
         <h2 className="text-xl font-bold">Watch this Ad to access Wi-Fi</h2>
         <div className="relative"> {/* Container for positioning */}
           <video width="320" height="240" autoPlay >
-            <source src="images/Ad.mp4" type="video/mp4" />
+            <source src="video/Ad.mp4" type="video/mp4" />
             {/* <source src="http://localhost:5000/api/ad-video" type="video/mp4" /> */}
           </video>
           {showSkip && (
