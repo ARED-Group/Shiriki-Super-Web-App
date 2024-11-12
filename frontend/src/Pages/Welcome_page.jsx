@@ -1,10 +1,24 @@
-import React, { useContext } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import ConnectForFree from "../Components/connectToWifi/connectForFree";
 import { TimeContext } from "../context/WifiTimeContext";
+import AdModal from '../Components/AdModal/AdModal'; 
+
 
 const Welcome = () => {
   const { isConnected } = useContext(TimeContext);
+  const [showAd, setShowAd] = useState(false); 
+  const navigate = useNavigate();
+
+  const handleCloseAd = () => {
+    setShowAd(false);
+    navigate('/services'); 
+  };
+
+  const handleShowAd = () => {
+    setShowAd(true);
+  };
+
 
   return (
     <div className="h-screen flex flex-col items-center justify-center space-y-2 py-6 bg-[#002D74]">
@@ -12,8 +26,10 @@ const Welcome = () => {
 
       {!isConnected && (
         <div className="px-2 w-96">
-          <Link to="/services">
-            <button className="relative group overflow-hidden px-6 w-full h-12 rounded-full flex space-x-2 items-center justify-center bg-gradient-to-r from-blue-800 to-blue-500 hover:to-purple-600">
+          {/* <Link to="/services"> */}
+            <button 
+              onClick={handleShowAd} 
+              className="relative group overflow-hidden px-6 w-full h-12 rounded-full flex space-x-2 items-center justify-center bg-gradient-to-r from-blue-800 to-blue-500 hover:to-purple-600">
               <span className="relative text-sm text-white">Later</span>
               <div className="flex items-center -space-x-3 translate-x-3">
                 <div className="w-2.5 h-[1.6px] rounded bg-white origin-left scale-x-0 transition duration-300 group-hover:scale-x-100"></div>
@@ -33,9 +49,10 @@ const Welcome = () => {
                 </svg>
               </div>
             </button>
-          </Link>
+        
         </div>
       )}
+     {showAd && <AdModal onClose={handleCloseAd} />}
     </div>
   );
 };
