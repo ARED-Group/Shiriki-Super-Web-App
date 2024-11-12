@@ -15,7 +15,7 @@ const AdModal = ({ onClose }) => {
           setLoading(true);
           setTimeout(() => {
             onClose(); // Close modal after loading
-            navigate('/homepage');
+            navigate('/services');
           }, 2000); // display loading for 2 seconds before navigating
           return 0;
         }
