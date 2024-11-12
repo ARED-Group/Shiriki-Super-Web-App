@@ -8,31 +8,26 @@ import freeBundleExhasuted from "./../../assets/images/ConnectForFree.png";
 import WifiTimeStepper from "./WifiTimeStepper";
 import { Link } from "react-router-dom";
 import { TimeContext } from "../../context/WifiTimeContext";
-import AdModal from "../AdModal/AdModal"; 
 
 Modal.setAppElement("#root");
 
 const ConnectForFree = () => {
-  const { timeLeft, isConnected, startTimer, stopTimer } = useContext(TimeContext);
+  const { timeLeft, isConnected, startTimer, stopTimer } =
+    useContext(TimeContext);
   const [showLogoutModal, setShowLogoutModal] = useState(false);
   const [showStepper, setShowStepper] = useState(false);
-  const [showAdModal, setShowAdModal] = useState(false); 
-
   const navigate = useNavigate();
 
   const formatTime = (seconds) => {
     const minutes = Math.floor(seconds / 60);
     const secs = seconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${secs
+      .toString()
+      .padStart(2, "0")}`;
   };
 
   const handleConnect = () => {
-    setShowAdModal(true); // Displaying AdModal when Connect to WiFi is clicked
-  };
-
-  const handleCloseAdModal = () => {
-    setShowAdModal(false); // Hiding AdModal when ad ends or is skipped
-    startTimer(0.1 * 60); // Starting WiFi timer after AdModal closes
+    startTimer(0.1 * 60); // Start countdown based on time
   };
 
   const handleLogout = () => {
@@ -53,7 +48,6 @@ const ConnectForFree = () => {
     setShowStepper(false);
     startTimer(0.1 * 60); // Set new countdown time after the stepper
   };
-
   return (
     <div className="flex flex-col w-96 h-full items-center justify-between py-1">
       <Modal
@@ -65,10 +59,16 @@ const ConnectForFree = () => {
         <h2 className="text-lg font-semibold mb-4">Confirm Logout</h2>
         <p>You will be accessing offline data only?</p>
         <div className="mt-6 flex justify-center space-x-4">
-          <button onClick={confirmLogout} className="px-4 py-2 bg-red-500 text-white rounded-md">
+          <button
+            onClick={confirmLogout}
+            className="px-4 py-2 bg-red-500 text-white rounded-md"
+          >
             Yes, Logout
           </button>
-          <button onClick={() => setShowLogoutModal(false)} className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md">
+          <button
+            onClick={() => setShowLogoutModal(false)}
+            className="px-4 py-2 bg-gray-300 text-gray-700 rounded-md"
+          >
             Cancel
           </button>
         </div>
@@ -105,7 +105,11 @@ const ConnectForFree = () => {
       ) : timeLeft > 0 ? (
         <>
           <div>
-            <img src={freeWifi} alt="Logo" className="w-36 h-36 rounded-full object-cover" />
+            <img
+              src={freeWifi}
+              alt="Logo"
+              className="w-36 h-36 rounded-full object-cover"
+            />
           </div>
 
           <div className="flex flex-col items-center space-y-4">
@@ -118,10 +122,15 @@ const ConnectForFree = () => {
           <div className="flex flex-col items-center space-y-4">
             <Link to="/services">
               <button className="relative group overflow-hidden px-6 w-full h-12 rounded-full flex space-x-2 items-center justify-center bg-gradient-to-r from-blue-800 to-blue-500 hover:to-green-600">
-                <span className="relative text-sm text-white">Go to Services</span>
+                <span className="relative text-sm text-white">
+                  Go to Services
+                </span>
               </button>
             </Link>
-            <button onClick={handleLogout} className="w-full bg-red-500 text-white py-2 rounded-md">
+            <button
+              onClick={handleLogout}
+              className="w-full bg-red-500 text-white py-2 rounded-md"
+            >
               LOGOUT
             </button>
           </div>
@@ -129,7 +138,11 @@ const ConnectForFree = () => {
       ) : (
         <>
           <div>
-            <img src={freeBundleExhasuted} alt="Logo" className="w-36 h-36 rounded-full object-cover" />
+            <img
+              src={freeBundleExhasuted}
+              alt="Logo"
+              className="w-36 h-36 rounded-full object-cover"
+            />
           </div>
           <div className="text-center text-red-500 font-light text-xl px-2">
             Free Connection Time is up! Please reconnect to continue browsing.
@@ -148,12 +161,12 @@ const ConnectForFree = () => {
            hover:before:scale-y-100
            "
           >
-            <span className="relative uppercase text-base text-white">Get more wifi time</span>
+            <span className="relative uppercase text-base text-white">
+              Get more wifi time
+            </span>
           </button>
         </>
       )}
-
-      {showAdModal && <AdModal onClose={handleCloseAdModal} />}
     </div>
   );
 };
