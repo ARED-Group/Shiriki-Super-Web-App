@@ -7,6 +7,8 @@ import Login from "../Pages/Login";
 import ComingSoon from "../Pages/ComingSoon";
 import MobileLayout from "../Layout/MobileLayout";
 import WifiService from "../Components/Services/WifiService";
+import Queue from "../Pages/Queue"
+import QueueDetails from "../Pages/QueueDetails"
 const AppRoutes = () => {
   return (
     <Routes>
@@ -20,6 +22,8 @@ const AppRoutes = () => {
       <Route path="/login" element={<Login />} />
       <Route path="/wifi-connection" element={<ComingSoon />} />
       <Route path="/verification" element={<Verification />} />
+      <Route path="/queue" element={<Queue />} />
+      <Route path="/queue-details" element={<QueueDetails />} />
     </Routes>
   );
 };

@@ -19,6 +19,7 @@
     "bootstrap": "^4.6.2",
     "firebase": "^11.0.1",
     "flag-icons": "^7.2.3",
+    "primereact": "^10.8.4",
     "react": "^18.3.1",
     "react-bootstrap": "^2.10.5",
     "react-dom": "^18.3.1",

@@ -4,6 +4,7 @@ import ServicesSection from "../Components/ServicesSection";
 import Recents from "../Components/Recents";
 import BottomNavBar from "../Components/BottomNavBar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 import {
   faQuestion,
   faUtensils,
@@ -29,10 +30,12 @@ const Home = () => {
     {
       name: "Queuing",
       icon: (
-        <FontAwesomeIcon
-          icon={faPersonWalkingDashedLineArrowRight}
-          style={{ color: "#FF4646" }}
-        />
+        <Link to="/queue">
+          <FontAwesomeIcon
+            icon={faPersonWalkingDashedLineArrowRight}
+            style={{ color: "#FF4646" }}
+          />
+        </Link>
       ),
     },
     {
