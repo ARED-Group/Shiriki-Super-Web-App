@@ -42,5 +42,8 @@
 
 ---
 
-## Project Structure
-
+## Getting Started
+- **Clone the ared-cmu-practicum repo**
+- **cd ./ared-cmu-practicum/frontend**
+- **start the frontend container**: docker-compose up --build
+- **Access the frontend web application**: http://localhost:3000/
