@@ -111,6 +111,7 @@ const Queue = () => {
           <div className="w-full h-96 mt-10 lg:mt-20">
             <Image
               src="https://lirp.cdn-website.com/9bcffaf9/dms3rep/multi/opt/iMakan+virtual+queue-1920w.jpeg"
+              // src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img,w_1000/https://www.rsiconcepts.com/blog/wp-content/uploads/2022/11/Automate-Several-Steps-of-Customer-Journey2.jpg"
               alt="Image"
               className="rounded-lg shadow-lg object-cover w-full h-full"
             />

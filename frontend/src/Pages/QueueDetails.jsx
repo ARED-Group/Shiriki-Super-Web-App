@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, Typography, Button, Box, Modal, TextField, Rating } from "@mui/material";
+import { Card, CardContent, Typography, Button, Box } from "@mui/material";
 import Header from "../Components/Header";
 import Footer from "../Components/Footer";
 
@@ -29,7 +29,8 @@ const services = [
   {
     id: 5,
     name: "Customer Support",
-    description: "Support for technical issues, device setup, and account inquiries.",
+    description:
+      "Support for technical issues, device setup, and account inquiries.",
   },
   {
     id: 6,
@@ -44,7 +45,10 @@ const QueueDetails = () => {
   const [open, setOpen] = useState(false);
   const [feedbackOpen, setFeedbackOpen] = useState(false);
   const [selectedService, setSelectedService] = useState(null);
-  const [queueInfo, setQueueInfo] = useState({ peopleInFront: 0, waitingTime: 0 });
+  const [queueInfo, setQueueInfo] = useState({
+    peopleInFront: 0,
+    waitingTime: 0,
+  });
   const [rating, setRating] = useState(0);
   const [feedback, setFeedback] = useState("");
 
@@ -53,11 +57,11 @@ const QueueDetails = () => {
   };
 
   const handleJoinQueue = (service) => {
-    setSelectedService(service);
     const randomPeople = Math.floor(Math.random() * 20) + 1;
     const randomTime = randomPeople * 3; // Each person takes approx. 3 minutes
-    setQueueInfo({ peopleInFront: randomPeople, waitingTime: randomTime });
-    setOpen(true);
+    const queueInfo = { peopleInFront: randomPeople, waitingTime: randomTime };
+
+    navigate("/queue-status", { state: { service, queueInfo } });
   };
 
   const handleClose = () => {
@@ -87,7 +91,6 @@ const QueueDetails = () => {
           <h1 className="text-3xl">MTN Service</h1>
         </div>
       </section>
-      
       <section className="flex flex-col items-center bg-gray-100">
         {services.map((service) => (
           <Card
@@ -123,51 +126,6 @@ const QueueDetails = () => {
           </Card>
         ))}
       </section>
-
-      {/* Queue Status Modal */}
-      <Modal open={open} onClose={handleClose}>
-        <Box sx={{ width: 400, padding: 4, margin: "100px auto", backgroundColor: "white", borderRadius: "8px", textAlign: "center" }}>
-          <Typography variant="h6" component="div" gutterBottom>
-            {selectedService?.name} Queue Status
-          </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 2 }}>
-            People in front of you: {queueInfo.peopleInFront}
-          </Typography>
-          <Typography variant="body1" sx={{ marginBottom: 2 }}>
-            Estimated waiting time: {queueInfo.waitingTime} minutes
-          </Typography>
-          <Button variant="contained" color="primary" onClick={handleClose}>
-            Close
-          </Button>
-        </Box>
-      </Modal>
-
-      {/* Feedback Modal */}
-      <Modal open={feedbackOpen} onClose={() => setFeedbackOpen(false)}>
-        <Box sx={{ width: 400, padding: 4, margin: "100px auto", backgroundColor: "white", borderRadius: "8px", textAlign: "center" }}>
-          <Typography variant="h6" component="div" gutterBottom>
-            Rate Our Service
-          </Typography>
-          <Rating
-            value={rating}
-            onChange={(event, newValue) => setRating(newValue)}
-            sx={{ mb: 2 }}
-          />
-          <TextField
-            label="Feedback"
-            multiline
-            rows={4}
-            value={feedback}
-            onChange={(e) => setFeedback(e.target.value)}
-            variant="outlined"
-            fullWidth
-            sx={{ mb: 2 }}
-          />
-          <Button variant="contained" color="primary" onClick={handleFeedbackSubmit}>
-            Submit Feedback
-          </Button>
-        </Box>
-      </Modal>
       <Footer />
     </>
   );
