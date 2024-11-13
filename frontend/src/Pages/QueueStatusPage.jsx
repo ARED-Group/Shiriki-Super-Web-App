@@ -24,7 +24,9 @@ const QueueStatusPage = () => {
   const navigate = useNavigate();
   const { service, queueInfo } = location.state;
 
-  const maxWaitingTime = Math.min(queueInfo.waitingTime, 20); // Cap waiting time to 20 minutes
+  // Calculate max waiting time based on people in front, capped at 25 minutes
+  const estimatedTimePerPerson = 2; // Estimated wait time per person, in minutes
+  const maxWaitingTime = Math.min(queueInfo.peopleInFront * estimatedTimePerPerson, 25);
   const [remainingTime, setRemainingTime] = useState(maxWaitingTime); // Track the countdown in whole minutes
   const [progress, setProgress] = useState(0);
   const [notificationOpen, setNotificationOpen] = useState(false);
@@ -103,9 +105,9 @@ const QueueStatusPage = () => {
               variant="h6"
               gutterBottom
               sx={{
-                fontSize: "1.85rem", // Equivalent to Tailwind's text-4xl
-                color: "#1976d2", // Custom color
-                fontWeight: "bold", // Bold for emphasis
+                fontSize: "1.85rem",
+                color: "#1976d2",
+                fontWeight: "bold",
               }}
             >
               {service?.name} Queue Status
@@ -113,8 +115,8 @@ const QueueStatusPage = () => {
             <Typography
               variant="body1"
               sx={{
-                fontSize: "1.2rem", // Slightly larger font
-                color: "#333333", // Darker text color
+                fontSize: "1.2rem",
+                color: "#333333",
                 marginBottom: 2,
               }}
             >
@@ -123,10 +125,10 @@ const QueueStatusPage = () => {
             <Typography
               variant="body1"
               sx={{
-                fontSize: "1.2rem", // Slightly larger font
-                color: "#ff9800", // Orange color for visibility
+                fontSize: "1.2rem",
+                color: "#ff9800",
                 marginBottom: 2,
-                fontWeight: "medium", // Medium weight text
+                fontWeight: "medium",
               }}
             >
               Estimated waiting time: {remainingTime} minutes
