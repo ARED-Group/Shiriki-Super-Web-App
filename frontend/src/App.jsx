@@ -10,7 +10,9 @@ function App() {
     <TimeProvider>
       <div className="App bg-slate-800 h-screen ">
         <BrowserRouter>
-          <AppRoutes />
+          <>
+            <AppRoutes />
+          </>
         </BrowserRouter>
       </div>
     </TimeProvider>
