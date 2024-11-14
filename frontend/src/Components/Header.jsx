@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from "react";
 import { TimeContext } from "../context/WifiTimeContext";
+import { Link, useLocation } from "react-router-dom";
 
 const Header = () => {
   const { timeLeft, isConnected } = useContext(TimeContext);
   const [message, setMessage] = useState(
     "Connect to wifi to see live information"
   );
+  const location = useLocation();
 
   // Format time in MM:SS
   const formatTime = (seconds) => {
@@ -25,25 +27,33 @@ const Header = () => {
   }, [isConnected, timeLeft]);
 
   return (
-    <header className="bg-[#002D74] text-white py-2 md:py-3 px-6 sticky top-0 z-40">
-      <div
-        className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
-        role="alert"
-      >
-        <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
-          Wifi
-        </span>
-        <span className="font-semibold mr-2 text-left flex-auto">
-          {message}
-        </span>
-        <svg
-          className="fill-current opacity-75 h-4 w-4"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="0 0 20 20"
-        >
-          <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
-        </svg>
-      </div>
+    <header
+      className={`bg-[#002D74] text-white ${
+        location.pathname !== "/services/wifi" ? "py-2" : "py-6"
+      } md:py-3 px-6 sticky top-0 z-40`}
+    >
+      {location.pathname !== "/services/wifi" && (
+        <Link to="/services/wifi">
+          <div
+            className="p-2 bg-indigo-800 items-center text-indigo-100 leading-none lg:rounded-full flex lg:inline-flex"
+            role="alert"
+          >
+            <span className="flex rounded-full bg-indigo-500 uppercase px-2 py-1 text-xs font-bold mr-3">
+              Wifi
+            </span>
+            <span className="font-semibold mr-2 text-left flex-auto">
+              {message}
+            </span>
+            <svg
+              className="fill-current opacity-75 h-4 w-4"
+              xmlns="http://www.w3.org/2000/svg"
+              viewBox="0 0 20 20"
+            >
+              <path d="M12.95 10.707l.707-.707L8 4.343 6.586 5.757 10.828 10l-4.242 4.243L8 15.657l4.95-4.95z" />
+            </svg>
+          </div>
+        </Link>
+      )}
     </header>
   );
 };
