@@ -31,14 +31,4 @@ routes:
           nodes:
               "test:80": 1
           type: roundrobin
-    - uri: /super-web-app
-      upstream:
-          nodes:
-              "super-web-app:80": 1
-          type: roundrobin
-    - uri: /super-web-app/*
-      upstream:
-          nodes:
-              "super-web-app:80": 1
-          type: roundrobin
 #END
