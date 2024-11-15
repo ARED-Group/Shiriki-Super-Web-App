@@ -14,12 +14,31 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 #
-datasources:
- - access: 'proxy'
-   editable: true
-   is_default: true
-   name: 'apisix'
-   org_id: 1
-   type: 'prometheus'
-   url: 'http://prometheus:9090'
-   version: 1
+
+routes:
+    - uri: /
+      upstream:
+          nodes:
+              "test:80": 1
+          type: roundrobin
+    - uri: /test
+      upstream:
+          nodes:
+              "test:80": 1
+          type: roundrobin
+    - uri: /test/*
+      upstream:
+          nodes:
+              "test:80": 1
+          type: roundrobin
+    - uri: /super-web-app
+      upstream:
+          nodes:
+              "super-web-app:80": 1
+          type: roundrobin
+    - uri: /super-web-app/*
+      upstream:
+          nodes:
+              "super-web-app:80": 1
+          type: roundrobin
+#END
