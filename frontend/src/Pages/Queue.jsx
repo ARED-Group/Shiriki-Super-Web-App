@@ -16,12 +16,10 @@ const Queue = () => {
   const [lastTicketNumber, setLastTicketNumber] = useState(0);
   const [lastQueuePosition, setLastQueuePosition] = useState(0);
 
-  // Simulate queue status changes with a delay based on ticket number and queue position
+  // Simulate queue status changes
   useEffect(() => {
     if (ticket) {
       const statusTimers = [];
-
-      // Helper function to simulate status change with a dynamic delay
       const updateStatus = (newStatus, delay) => {
         statusTimers.push(
           setTimeout(() => {
@@ -30,15 +28,17 @@ const Queue = () => {
         );
       };
 
-      // Calculate delay based on ticket number and queue position
-      const queueDelay = Math.floor(ticket.queuePosition * 1.5 * 1000); // Longer queue, longer delay
-      const randomDelay = Math.floor(Math.random() * 2 + 1) * 60 * 1000; // Random delay (1-2 minutes)
+      // Waiting -> Near Service in 1 to 3 minutes
+      updateStatus(
+        "Near Service",
+        Math.floor(Math.random() * 2 + 1) * 60 * 1000
+      );
 
-      // Waiting -> Near Service in 1-3 minutes, depending on queue position
-      updateStatus("Near Service", queueDelay + randomDelay);
-
-      // Near Service -> Being Served in 2-4 minutes after previous status, depending on queue position
-      updateStatus("Being Served", queueDelay + randomDelay + Math.floor(Math.random() * 2 + 2) * 60 * 1000);
+      // Near Service -> Being Served in 2 to 4 minutes after previous status
+      updateStatus(
+        "Being Served",
+        Math.floor(Math.random() * 2 + 2) * 60 * 1000
+      );
 
       return () => {
         // Clear all timers on component unmount or ticket change
@@ -203,11 +203,11 @@ const Queue = () => {
                   {ticket.ticketNumber}
                 </strong>
               </p>
-              <p className="text-lg mb-3">
-                Status:{" "}
-                <strong style={{ color: getStatusColor(ticket.status) }} >
-                  {ticket.status}
-                </strong>{" "}
+              <p
+                className="text-lg mb-3"
+                style={{ color: getStatusColor(ticket.status) }}
+              >
+                Status: <strong>{ticket.status}</strong>{" "}
                 {/* Status text color */}
               </p>
               <p className="text-lg mb-3">
