@@ -16,11 +16,15 @@ const Queue = () => {
   const [lastTicketNumber, setLastTicketNumber] = useState(0);
   const [lastQueuePosition, setLastQueuePosition] = useState(0);
 
-  // Simulate queue status changes
+  // Simulate queue status changes with controlled delays
   useEffect(() => {
     if (ticket) {
       const statusTimers = [];
+      let timeoutIndex = 0;
+
+      // Function to update the ticket status at specific intervals
       const updateStatus = (newStatus, delay) => {
+        timeoutIndex++;
         statusTimers.push(
           setTimeout(() => {
             setTicket((prevTicket) => ({ ...prevTicket, status: newStatus }));
@@ -28,20 +32,19 @@ const Queue = () => {
         );
       };
 
-      // Waiting -> Near Service in 1 to 3 minutes
-      updateStatus(
-        "Near Service",
-        Math.floor(Math.random() * 2 + 1) * 60 * 1000
-      );
+      // Sequence of status transitions: Waiting -> Near Service -> Being Served
+      // Start with "Waiting"
+      if (ticket.status === "Waiting") {
+        updateStatus("Near Service", 1 * 60 * 1000); // 1 minute
+      }
 
-      // Near Service -> Being Served in 2 to 4 minutes after previous status
-      updateStatus(
-        "Being Served",
-        Math.floor(Math.random() * 2 + 2) * 60 * 1000
-      );
+      // Then transition from "Near Service" -> "Being Served"
+      if (ticket.status === "Near Service") {
+        updateStatus("Being Served", 1 * 60 * 1000); // 1 minute
+      }
 
+      // Cleanup timers when component unmounts or ticket changes
       return () => {
-        // Clear all timers on component unmount or ticket change
         statusTimers.forEach((timer) => clearTimeout(timer));
       };
     }
