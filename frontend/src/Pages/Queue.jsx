@@ -1,122 +1,232 @@
-import React, { useState } from "react";
-import { Button, Modal, Box, TextField } from "@mui/material";
-import { Image } from "primereact/image";
-import { useNavigate } from "react-router-dom";
+import React, { useState, useEffect } from "react";
+import { Box, TextField, Button, MenuItem } from "@mui/material";
 import Header from "../Components/Header";
+import Footer from "../Components/Footer";
 
 const Queue = () => {
-  const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [emailError, setEmailError] = useState("");
-  const [passwordError, setPasswordError] = useState("");
-  const navigate = useNavigate();
+  const [ticket, setTicket] = useState(null);
+  const [form, setForm] = useState({
+    name: "",
+    phone: "",
+    email: "",
+    serviceType: "",
+  });
 
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  // Track the last ticket number and queue position globally
+  const [lastTicketNumber, setLastTicketNumber] = useState(0);
+  const [lastQueuePosition, setLastQueuePosition] = useState(0);
 
-  // Email and password validation
-  const isValidEmail = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    return emailRegex.test(email);
-  };
+  // Simulate queue status changes with a delay based on ticket number and queue position
+  useEffect(() => {
+    if (ticket) {
+      const statusTimers = [];
 
-  const handleLogin = () => {
-    let valid = true;
+      // Helper function to simulate status change with a dynamic delay
+      const updateStatus = (newStatus, delay) => {
+        statusTimers.push(
+          setTimeout(() => {
+            setTicket((prevTicket) => ({ ...prevTicket, status: newStatus }));
+          }, delay)
+        );
+      };
 
-    if (!isValidEmail(email)) {
-      setEmailError("Please enter a valid email address.");
-      valid = false;
-    } else {
-      setEmailError("");
+      // Calculate delay based on ticket number and queue position
+      const queueDelay = Math.floor(ticket.queuePosition * 1.5 * 1000); // Longer queue, longer delay
+      const randomDelay = Math.floor(Math.random() * 2 + 1) * 60 * 1000; // Random delay (1-2 minutes)
+
+      // Waiting -> Near Service in 1-3 minutes, depending on queue position
+      updateStatus("Near Service", queueDelay + randomDelay);
+
+      // Near Service -> Being Served in 2-4 minutes after previous status, depending on queue position
+      updateStatus("Being Served", queueDelay + randomDelay + Math.floor(Math.random() * 2 + 2) * 60 * 1000);
+
+      return () => {
+        // Clear all timers on component unmount or ticket change
+        statusTimers.forEach((timer) => clearTimeout(timer));
+      };
     }
+  }, [ticket]);
 
-    if (valid) {
-      navigate("/queue-details"); // Only navigate if inputs are valid
+  const handleChange = (e) => {
+    setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleGenerateTicket = () => {
+    const newTicketNumber = lastTicketNumber + 1; // Increment ticket number
+    const newQueuePosition = lastQueuePosition + 1; // Increment queue position
+
+    const status = "Waiting"; // Default status
+    const checkInTime = new Date().toLocaleTimeString();
+
+    setTicket({
+      ticketNumber: newTicketNumber,
+      status,
+      checkInTime,
+      queuePosition: newQueuePosition,
+    });
+
+    // Update global counters
+    setLastTicketNumber(newTicketNumber);
+    setLastQueuePosition(newQueuePosition);
+  };
+
+  // This function will get the status color for both the circle and the status text
+  const getStatusColor = (status) => {
+    switch (status) {
+      case "Waiting":
+        return "red"; // Red for Waiting status
+      case "Near Service":
+        return "orange"; // Orange for Near Service
+      case "Being Served":
+        return "green"; // Green for Being Served
+      default:
+        return "gray"; // Default gray
     }
   };
 
-  const style = {
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%, -50%)",
-    width: "90%",
-    maxWidth: "500px",
-    bgcolor: "background.paper",
-    boxShadow: 24,
-    p: 4,
-    borderRadius: "8px",
-  };
+  // State for tracking button opacity after click
+  const [isClicked, setIsClicked] = useState(false);
 
   return (
     <>
       <Header />
-      <div className="flex flex-col lg:flex-row min-h items-center lg:space-x-4">
-        <div className="flex-1 p-4">
-          <section className="p-8 text-center">
-            <div className="flex items-center justify-center">
-              <div className="flex-1 p-4">
-                <h1 className="text-4xl text-white mb-4">
-                  You are Welcome! to our Queue
-                </h1>
-                <Button onClick={handleOpen} variant="contained">
-                  Login
-                </Button>
-                <Modal
-                  open={open}
-                  onClose={handleClose}
-                  aria-labelledby="modal-modal-title"
-                  aria-describedby="modal-modal-description"
-                >
-                  <Box sx={style}>
-                    <Box component="form" sx={{ mt: 4, textAlign: "center" }}>
-                      <TextField
-                        label="Email"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        error={!!emailError}
-                        helperText={emailError}
-                      />
-                      <TextField
-                        label="Password"
-                        type="password"
-                        variant="outlined"
-                        fullWidth
-                        margin="normal"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        error={!!passwordError}
-                        helperText={passwordError}
-                      />
-                      <Button
-                        variant="contained"
-                        color="primary"
-                        sx={{ mt: 2 }}
-                        onClick={handleLogin}
-                      >
-                        Login
-                      </Button>
-                    </Box>
-                  </Box>
-                </Modal>
-              </div>
-            </div>
-          </section>
-        </div>
-        <div className="flex justify-center flex-1 p-10 text-white text-center">
-          <div className="w-full h-96 mt-10 lg:mt-20">
-            <Image
-              src="https://lirp.cdn-website.com/9bcffaf9/dms3rep/multi/opt/iMakan+virtual+queue-1920w.jpeg"
-              // src="https://sp-ao.shortpixel.ai/client/to_auto,q_lossless,ret_img,w_1000/https://www.rsiconcepts.com/blog/wp-content/uploads/2022/11/Automate-Several-Steps-of-Customer-Journey2.jpg"
-              alt="Image"
-              className="rounded-lg shadow-lg object-cover w-full h-full"
-            />
-          </div>
-        </div>
+      <div className="bg-white min-h-min">
+        <Box
+          sx={{
+            display: "flex",
+            p: 4,
+            gap: 4,
+            alignItems: "flex-start",
+            marginBottom: "50px",
+            width: "100%", // Ensure full width for the container
+          }}
+        >
+          {/* Ticket Generation Form */}
+          <Box
+            sx={{ flex: "0 0 50%", p: 3, boxShadow: 3, borderRadius: "8px" }}
+          >
+            <h1 className="text-blue-800 text-3xl font-bold">
+              Ticket Generation
+            </h1>
+            <Box
+              component="form"
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 2,
+                width: "100%", // Ensuring full width
+              }}
+            >
+              <TextField
+                label="Name"
+                name="name"
+                value={form.name}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                label="Phone Number"
+                name="phone"
+                value={form.phone}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                label="Email"
+                name="email"
+                value={form.email}
+                onChange={handleChange}
+                fullWidth
+              />
+              <TextField
+                select
+                label="Service Type"
+                name="serviceType"
+                value={form.serviceType}
+                onChange={handleChange}
+                fullWidth
+              >
+                <MenuItem value="General Inquiry">General Inquiry</MenuItem>
+                <MenuItem value="Technical Support">Technical Support</MenuItem>
+                <MenuItem value="Billing">Billing</MenuItem>
+              </TextField>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={() => {
+                  handleGenerateTicket();
+                  setIsClicked(true); // Set clicked state to true
+                }}
+                fullWidth
+                sx={{
+                  opacity: isClicked ? 0.5 : 1, // Change opacity when clicked
+                  transition: "opacity 0.3s ease", // Smooth transition for opacity change
+                }}
+              >
+                Generate Ticket
+              </Button>
+            </Box>
+          </Box>
+
+          {/* Ticket Info Modal */}
+          {ticket && (
+            <Box
+              sx={{
+                flex: "0 0 45%",
+                p: 3,
+                boxShadow: 3,
+                borderRadius: "8px",
+                position: "relative",
+                backgroundColor: "#2f3949", // Card background color
+                color: "white", // Ensure text is readable
+                height: "45vh",
+              }}
+            >
+              {/* Status Indicator Circle */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: "-10px",
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                  width: "30px",
+                  height: "30px",
+                  borderRadius: "50%",
+                  backgroundColor: getStatusColor(ticket.status), // Status color for circle
+                  boxShadow: "0 0 8px rgba(0,0,0,0.2)",
+                }}
+              />
+              <h2 className="text-3xl font-bold">Ticket Info</h2>
+              <p className="text-lg mb-3">
+                Ticket Number:{" "}
+                <strong className="text-yellow-400">
+                  {ticket.ticketNumber}
+                </strong>
+              </p>
+              <p className="text-lg mb-3">
+                Status:{" "}
+                <strong style={{ color: getStatusColor(ticket.status) }} >
+                  {ticket.status}
+                </strong>{" "}
+                {/* Status text color */}
+              </p>
+              <p className="text-lg mb-3">
+                Check-In Time:{" "}
+                <strong className="text-yellow-400">
+                  {ticket.checkInTime}
+                </strong>
+              </p>
+              <p className="text-lg">
+                You are number{" "}
+                <strong className="text-yellow-400">
+                  {ticket.queuePosition}
+                </strong>{" "}
+                in the queue. Please wait while we prepare for your service.
+              </p>
+            </Box>
+          )}
+        </Box>
+        <Footer />
       </div>
     </>
   );
