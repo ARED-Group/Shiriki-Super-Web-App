@@ -4,4 +4,4 @@ services:
   apache:
     build: .
     ports:
-      - "9090:80"
+      - "8080:80"

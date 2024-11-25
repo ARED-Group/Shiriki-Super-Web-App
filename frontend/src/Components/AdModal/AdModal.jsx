@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const AdModal = ({ onClose }) => {
   const [timeLeft, setTimeLeft] = useState(30);
@@ -15,7 +15,7 @@ const AdModal = ({ onClose }) => {
           setLoading(true);
           setTimeout(() => {
             onClose(); // Close modal after loading
-            navigate('/services');
+            navigate("/services");
           }, 2000); // display loading for 2 seconds before navigating
           return 0;
         }
@@ -37,7 +37,7 @@ const AdModal = ({ onClose }) => {
     setLoading(true);
     setTimeout(() => {
       onClose();
-      navigate('/services');
+      navigate("/services");
     }, 2000); //loading for 2 seconds before navigating
   };
 
@@ -45,10 +45,15 @@ const AdModal = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
       <div className="bg-white p-6 rounded-lg shadow-lg text-center">
         <h2 className="text-xl font-bold">Watch this Ad to access</h2>
-        <div className="relative"> {/* Container for positioning */}
-          <video width="320" height="240" autoPlay >
-            <source src="video/Ad.mp4" type="video/mp4" />
-            {/* <source src="http://localhost:5000/api/ad-video" type="video/mp4" /> */}
+        <div className="relative">
+          {" "}
+          {/* Container for positioning */}
+          <video width="320" height="240" autoPlay>
+            {/* <source src="video/Ad.mp4" type="video/mp4" /> */}
+            <source
+              src="http://localhost:8080/images/video/Ad.mp4"
+              type="video/mp4"
+            />
           </video>
           {showSkip && (
             <button
