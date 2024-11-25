@@ -203,11 +203,11 @@ const Queue = () => {
                   {ticket.ticketNumber}
                 </strong>
               </p>
-              <p
-                className="text-lg mb-3"
-                style={{ color: getStatusColor(ticket.status) }}
-              >
-                Status: <strong>{ticket.status}</strong>{" "}
+              <p className="text-lg mb-3">
+                Status:{" "}
+                <strong style={{ color: getStatusColor(ticket.status) }}>
+                  {ticket.status}
+                </strong>{" "}
                 {/* Status text color */}
               </p>
               <p className="text-lg mb-3">
