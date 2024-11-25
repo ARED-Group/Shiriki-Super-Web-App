@@ -31,4 +31,19 @@ routes:
           nodes:
               "test:80": 1
           type: roundrobin
+    - uri: /queing
+      upstream:
+          nodes:
+              "backend:8080": 1
+          type: roundrobin
+    - uri: /queing/
+      upstream:
+          nodes:
+              "backend:8080": 1
+          type: roundrobin
+    - uri: /queing/*
+      upstream:
+          nodes:
+              "backend:8080": 1
+          type: roundrobin
 #END

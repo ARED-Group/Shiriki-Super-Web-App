@@ -45,4 +45,20 @@ balena-engine run -d --name test \
     -e NGINX_PORT=80 \
     nginx:1.19.0-alpine
 
+balena-engine run -d --name couchdb \
+    --restart always \
+    --network apisix \
+    -p 5984:5984 \
+    -e COUCHDB_USER=Maryk \
+    -e COUCHDB_PASSWORD=Marykiki \
+    -v couchdb_data:/opt/couchdb/data \
+    couchdb:3.3
+
+balena-engine run -d --name backend \
+    --restart always \
+    --network apisix \
+    -p 8080:8080 \
+    -e COUCHDB_URL=http://couchdb:5984 \
+    backend-service
+
 echo "All services are now running."
