@@ -2,9 +2,7 @@ import React, { useState, useContext } from "react";
 import { BiWifi } from "react-icons/bi";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-import logo from "./../../assets/images/bkarena.png";
-import freeWifi from "./../../assets/images/freeWifi.png";
-import freeBundleExhasuted from "./../../assets/images/ConnectForFree.png";
+
 import WifiTimeStepper from "./WifiTimeStepper";
 import { Link } from "react-router-dom";
 import { TimeContext } from "../../context/WifiTimeContext";
@@ -82,7 +80,11 @@ const ConnectForFree = () => {
             <BiWifi size={150} className="text-slate-100" />
           </div>
           <div className="border border-[#002D74] rounded-md shadow-xl">
-            <img src={logo} alt="Logo" className="w-36" />
+            <img
+              src="http://localhost:8080/images/bkarena.png"
+              alt="Logo"
+              className="w-36"
+            />
           </div>
           <button
             onClick={handleConnect}
@@ -106,8 +108,8 @@ const ConnectForFree = () => {
         <>
           <div>
             <img
-              src={freeWifi}
-              alt="Logo"
+              src="http://localhost:8080/images/freeWifi.png"
+              alt="freeWifi"
               className="w-36 h-36 rounded-full object-cover"
             />
           </div>
@@ -139,8 +141,8 @@ const ConnectForFree = () => {
         <>
           <div>
             <img
-              src={freeBundleExhasuted}
-              alt="Logo"
+              src="http://localhost:8080/images/ConnectForFree.png"
+              alt="freeWifiExhausted"
               className="w-36 h-36 rounded-full object-cover"
             />
           </div>

@@ -3,7 +3,7 @@ import { FaCheckCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import md5 from "md5";
 import axios from "axios"; // Import Axios
-import successRefresh from "./../../assets/images/successRefreshToken.png";
+
 import { Buffer } from "buffer";
 
 const steps = ["Enter Phone Number", "Submit Token", "Success"];
@@ -84,7 +84,8 @@ const WifiTimeStepper = ({ onClose }) => {
       // Move to success step
       setActiveStep((prev) => prev + 1);
     } catch (error) {
-      console.error("Error during authentication request:", error);
+      console.log("Error during authentication request:", error);
+      console.log(url.href);
       debug.push(`Step 7: Error - ${error.message}`);
       alert("Authentication failed. Please try again.");
     }
@@ -153,7 +154,7 @@ const WifiTimeStepper = ({ onClose }) => {
               You are back online
             </p>
             <img
-              src={successRefresh}
+              src="http://localhost:8080/images/successRefreshToken.png"
               className="py-2"
               alt="Success refresh token"
             />

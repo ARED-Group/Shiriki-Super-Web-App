@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import WifiIcon from "../assets/images/router.png";
 import { Link } from "react-router-dom";
 import SignInWithGoogle from "../Components/signInWithGoogle";
 
@@ -29,7 +28,11 @@ const Login = () => {
           </div>
 
           <div className="p-8 flex flex-col rounded-2xl bg-blue-50 shadow">
-            <img className="mx-auto h-12 w-auto" src={WifiIcon} alt="wifi" />
+            <img
+              className="mx-auto h-12 w-auto"
+              src="http://localhost:8080/images/router.png"
+              alt="wifi"
+            />
             <form className="mt-8 space-y-4" onSubmit={handleSubmit}>
               <p>
                 <b>Connect to WIFI</b>
@@ -110,7 +113,7 @@ const Login = () => {
               </label>
 
               <div className="!mt-8">
-               {/* <Link to='/verification'>
+                {/* <Link to='/verification'>
                 <button 
                     type="submit" 
                     className={`h-12 px-6 m-2 py-3 px-2 text-sm font-semibold tracking-wide rounded-full text-white ${agreeToTerms ? 'bg-[#002D74] cursor-pointer' : 'bg-gray-400 cursor-not-allowed'}`} */}

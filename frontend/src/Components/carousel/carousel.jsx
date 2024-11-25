@@ -1,8 +1,5 @@
 import React, { useRef } from "react";
 import Slider from "react-slick";
-// import imsg2 from "../../assets/images/promotion.png";
-// import the_games from "../../assets/images/the-games.jpg";
-// import pizza from "../../assets/images/pizza.png";
 
 const Carousel = () => {
   const sliderRef = useRef(null);
@@ -17,7 +14,6 @@ const Carousel = () => {
   };
 
   // Array of image paths from the public/images directory
-  // const images = [imsg2, the_games, pizza, the_games, imsg2, pizza];
 
   const images = [
     "http://localhost:8080/images/promotion.png",

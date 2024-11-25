@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import googleAuth from "./../assets/images/google.png";
 import { GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 import { auth } from "./Firebase/firebase";
 
@@ -37,7 +36,11 @@ const SignInWithGoogle = () => {
       <p className="text-xs text-gray-400 font-thin">--Or continue with--</p>
 
       <button onClick={googleLogin} disabled={isPopupOpen}>
-        <img src={googleAuth} className="w-44" alt="auth with google" />
+        <img
+          src="http://localhost:8080/images/google.png"
+          className="w-44"
+          alt="auth with google"
+        />
       </button>
     </div>
   );
