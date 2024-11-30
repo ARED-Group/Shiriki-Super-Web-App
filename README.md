@@ -46,7 +46,7 @@
 - **Clone the ared-cmu-practicum repo**
 - **cd ./ared-cmu-practicum/apache**
 - **start the apache server** : docker-compose up -d --build 
-- **cd ./ared-cmu-practicum/frontend**
+- **cd ../ared-cmu-practicum/frontend**
 - **start the frontend container** : docker-compose up -d --build 
 - **Access the frontend web application**: http://localhost:3000/
 - **stop the containers anytime** : docker-compose down
