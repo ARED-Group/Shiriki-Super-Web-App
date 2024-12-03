@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
 import md5 from "md5";
-import axios from "axios"; // Import Axios
+// import axios from "axios"; // Import Axios
+import { TimeContext } from "../../context/WifiTimeContext";
 
 import { Buffer } from "buffer";
 
@@ -10,7 +11,7 @@ const steps = ["Enter Phone Number", "Submit Token", "Success"];
 
 const WifiTimeStepper = ({ onClose }) => {
   const [activeStep, setActiveStep] = useState(0);
-
+  const { stopTimer, startTimer } = useContext(TimeContext);
   const {
     register,
     handleSubmit,
@@ -72,23 +73,24 @@ const WifiTimeStepper = ({ onClose }) => {
     debug.push(`Step 6: Final URL (sensitive info masked): ${maskedUrl}`);
 
     // Make Axios GET request
-    try {
-      const response = await axios.get(url.href, {
-        headers: {
-          "X-Debug-Info": JSON.stringify(debug), // Pass debug info in a custom header
-        },
-      });
-      console.log("Server Response:", response.data);
-      debug.push(`Step 7: Server responded successfully.`);
+    // try {
+    //   const response = await axios.get(url.href, {
+    //     headers: {
+    //       "X-Debug-Info": JSON.stringify(debug), // Pass debug info in a custom header
+    //     },
+    //   });
+    //   console.log("Server Response:", response.data);
+    //   debug.push(`Step 7: Server responded successfully.`);
 
-      // Move to success step
-      setActiveStep((prev) => prev + 1);
-    } catch (error) {
-      console.log("Error during authentication request:", error);
-      console.log(url.href);
-      debug.push(`Step 7: Error - ${error.message}`);
-      alert("Authentication failed. Please try again.");
-    }
+    // Move to success step
+    setActiveStep((prev) => prev + 1);
+
+    // } catch (error) {
+    //   console.log("Error during authentication request:", error);
+    //   console.log(url.href);
+    //   debug.push(`Step 7: Error - ${error.message}`);
+    //   alert("Authentication failed. Please try again.");
+    // }
 
     // Optionally store debug info in sessionStorage for troubleshooting
     sessionStorage.setItem("debugInfo", JSON.stringify(debug));
