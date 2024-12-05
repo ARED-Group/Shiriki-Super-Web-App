@@ -8,11 +8,6 @@ balena-engine version || {
     exit 1
 }
 
-# Pull images for all services
-balena-engine pull apache/apisix:${APISIX_IMAGE_TAG:-3.11.0-debian}
-balena-engine pull nginx:1.19.0-alpine
-balena-engine pull test
-
 # Create the required network for APISIX
 balena-engine network create apisix || echo "Network 'apisix' already exists."
 
@@ -36,29 +31,22 @@ balena-engine run -d --name super-web-app \
     -p 9000:80 \
     us-central1-docker.pkg.dev/m-shirki/super-web-app/super-web-app:amd64
 
-# Run the test service (nginx)
-balena-engine run -d --name test \
+# Run the test1 service (nginx)
+balena-engine run -d --name test1 \
     --restart always \
     --network apisix \
     -p 9081:80 \
-    -v $(pwd)/upstream/test.conf:/etc/nginx/nginx.conf \
+    -v $(pwd)/upstream/test1.conf:/etc/nginx/nginx.conf \
     -e NGINX_PORT=80 \
     nginx:1.19.0-alpine
 
-balena-engine run -d --name couchdb \
+# Run the test2 service (nginx)
+balena-engine run -d --name test2 \
     --restart always \
     --network apisix \
-    -p 5984:5984 \
-    -e COUCHDB_USER=Maryk \
-    -e COUCHDB_PASSWORD=Marykiki \
-    -v couchdb_data:/opt/couchdb/data \
-    couchdb:3.3
-
-balena-engine run -d --name backend \
-    --restart always \
-    --network apisix \
-    -p 8080:8080 \
-    -e COUCHDB_URL=http://couchdb:5984 \
-    backend-service
+    -p 9082:80 \
+    -v $(pwd)/upstream/test2.conf:/etc/nginx/nginx.conf \
+    -e NGINX_PORT=80 \
+    nginx:1.19.0-alpine
 
 echo "All services are now running."

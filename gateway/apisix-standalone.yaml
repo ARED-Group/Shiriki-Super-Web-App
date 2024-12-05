@@ -16,34 +16,14 @@
 #
 
 routes:
-    - uri: /
+    - uri: /test1
       upstream:
           nodes:
-              "test:80": 1
+              "test1:80": 1
           type: roundrobin
-    - uri: /test
+    - uri: /test2
       upstream:
           nodes:
-              "test:80": 1
-          type: roundrobin
-    - uri: /test/*
-      upstream:
-          nodes:
-              "test:80": 1
-          type: roundrobin
-    - uri: /queing
-      upstream:
-          nodes:
-              "backend:8080": 1
-          type: roundrobin
-    - uri: /queing/
-      upstream:
-          nodes:
-              "backend:8080": 1
-          type: roundrobin
-    - uri: /queing/*
-      upstream:
-          nodes:
-              "backend:8080": 1
+              "test2:80": 1
           type: roundrobin
 #END

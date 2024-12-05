@@ -35,20 +35,32 @@ services:
       apisix:
 
   super-web-app:
-    image: test
+    image: us-central1-docker.pkg.dev/m-shirki/super-web-app/super-web-app:amd64
     restart: always
     ports:
       - "9000:80"
     networks:
       apisix:
 
-  test:
+  test1:
     image: nginx:1.19.0-alpine
     restart: always
     volumes:
-      - ./upstream/test.conf:/etc/nginx/nginx.conf
+      - ./upstream/test1.conf:/etc/nginx/nginx.conf
     ports:
       - "9081:80/tcp"
+    environment:
+      - NGINX_PORT=80
+    networks:
+      apisix:
+
+  test2:
+    image: nginx:1.19.0-alpine
+    restart: always
+    volumes:
+      - ./upstream/test2.conf:/etc/nginx/nginx.conf
+    ports:
+      - "9082:80/tcp"
     environment:
       - NGINX_PORT=80
     networks:
