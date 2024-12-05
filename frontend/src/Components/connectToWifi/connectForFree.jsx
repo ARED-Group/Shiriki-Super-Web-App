@@ -25,7 +25,7 @@ const ConnectForFree = () => {
   };
 
   const handleConnect = () => {
-    startTimer(0.1 * 60); // Start countdown based on time
+    startTimer(0.1 * 100); // Start countdown based on time
   };
 
   const handleLogout = () => {
@@ -44,7 +44,7 @@ const ConnectForFree = () => {
 
   const closeStepper = () => {
     setShowStepper(false);
-    startTimer(0.1 * 60); // Set new countdown time after the stepper
+    startTimer(0.1 * 1000); // Set new countdown time after the stepper
   };
   return (
     <div className="flex flex-col w-96 h-full items-center justify-between py-1">
