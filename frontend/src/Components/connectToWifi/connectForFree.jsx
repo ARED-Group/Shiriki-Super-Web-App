@@ -2,7 +2,9 @@ import React, { useState, useContext } from "react";
 import { BiWifi } from "react-icons/bi";
 import Modal from "react-modal";
 import { useNavigate } from "react-router-dom";
-
+import logo from "./../../assets/images/bkarena.png";
+import freeWifi from "./../../assets/images/freeWifi.png";
+import freeBundleExhasuted from "./../../assets/images/ConnectForFree.png";
 import WifiTimeStepper from "./WifiTimeStepper";
 import { Link } from "react-router-dom";
 import { TimeContext } from "../../context/WifiTimeContext";
@@ -25,7 +27,7 @@ const ConnectForFree = () => {
   };
 
   const handleConnect = () => {
-    startTimer(0.1 * 100); // Start countdown based on time
+    startTimer(0.1 * 60); // Start countdown based on time
   };
 
   const handleLogout = () => {
@@ -44,7 +46,7 @@ const ConnectForFree = () => {
 
   const closeStepper = () => {
     setShowStepper(false);
-    startTimer(0.1 * 1000); // Set new countdown time after the stepper
+    startTimer(0.1 * 60); // Set new countdown time after the stepper
   };
   return (
     <div className="flex flex-col w-96 h-full items-center justify-between py-1">
@@ -80,11 +82,7 @@ const ConnectForFree = () => {
             <BiWifi size={150} className="text-slate-100" />
           </div>
           <div className="border border-[#002D74] rounded-md shadow-xl">
-            <img
-              src="http://localhost:8080/images/bkarena.png"
-              alt="Logo"
-              className="w-36"
-            />
+            <img src={logo} alt="Logo" className="w-36" />
           </div>
           <button
             onClick={handleConnect}
@@ -108,8 +106,8 @@ const ConnectForFree = () => {
         <>
           <div>
             <img
-              src="http://localhost:8080/images/freeWifi.png"
-              alt="freeWifi"
+              src={freeWifi}
+              alt="Logo"
               className="w-36 h-36 rounded-full object-cover"
             />
           </div>
@@ -141,8 +139,8 @@ const ConnectForFree = () => {
         <>
           <div>
             <img
-              src="http://localhost:8080/images/ConnectForFree.png"
-              alt="freeWifiExhausted"
+              src={freeBundleExhasuted}
+              alt="Logo"
               className="w-36 h-36 rounded-full object-cover"
             />
           </div>

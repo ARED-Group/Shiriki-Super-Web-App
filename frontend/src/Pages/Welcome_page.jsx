@@ -15,6 +15,7 @@ const Welcome = () => {
   };
 
   const handleShowAd = () => {
+    console.log(isConnected)
     setShowAd(true);
   };
 
