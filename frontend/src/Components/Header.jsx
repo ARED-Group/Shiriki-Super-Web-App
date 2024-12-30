@@ -11,16 +11,12 @@ const Header = ({ back }) => {
   return (
     <div
       style={{
-        background: 'linear-gradient(to bottom right, #f0f4f8, #d9e8fc)',
+        background: 'linear-gradient(to right, #3B82F6 , #1D4ED8)', // Gradient from light blue to blue-600
         padding: '20px',
-        marginTop: '-22px', // Margin top
-        marginBottom: '-4px', // Margin bottom
-        borderRadius: '40px', // Soft corners
-        boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)', // 3D raised shado
-        backgroundSize: 'cover', // Ensures the gradient covers the whole area without seams
-        backgroundRepeat: 'no-repeat', // Prevents the gradient from repeating
+        marginTop: '-22px', // Adjusted margin top
+        boxShadow: '0 10px 20px rgba(0, 0, 0, 0.1)', // 3D raised shadow
       }}
-      className="flex flex-col"
+      className="w-full flex flex-col"
     >
       <div className="px-2 mb-4 text-dark">
         <p onClick={goBack}>
@@ -30,7 +26,7 @@ const Header = ({ back }) => {
             height="24"
             viewBox="0 0 24 24"
             fill="none"
-            stroke="rgba(66, 153, 225, 0.5)"
+            stroke="rgba(255, 255, 255, 0.8)" // White stroke for contrast
             strokeWidth="2"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -40,13 +36,14 @@ const Header = ({ back }) => {
         </p>
       </div>
 
-      <div className="flex justify-between items-center px-2 rounded-b-3xl mb-4">
+      <div className="flex justify-between items-center px-2 mb-4">
+        {/* Search Input */}
         <div className="flex items-center">
           <div className="relative">
             <input
               type="text"
               placeholder="Search..."
-              className="bg-white rounded-2xl py-3 pl-10 pr-4 text-gray-600 border border-gray-300 shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transform transition-all hover:scale-105"
+              className="bg-white py-3 pl-10 pr-4 text-gray-600 border border-gray-300 rounded-[30px] shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transform transition-all hover:scale-105"
             />
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -65,13 +62,12 @@ const Header = ({ back }) => {
           </div>
         </div>
 
+        {/* Icons and Profile */}
         <div className="flex items-center justify-between gap-2.5">
+          {/* WiFi Icon */}
           <div
             onClick={goToWifi}
-            className="bg-white rounded-2xl w-11 h-11 border border-gray-400 flex items-center justify-center"
-            style={{
-              boxShadow: '0 4px 6px rgba(66, 153, 225, 0.5)',
-            }}
+            className="bg-white w-11 h-11 border border-gray-400 flex items-center justify-center rounded-[30px] shadow-md hover:shadow-lg transform transition-all hover:scale-105"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -91,11 +87,9 @@ const Header = ({ back }) => {
             </svg>
           </div>
 
+          {/* Bell Icon */}
           <div
-            className="bg-white rounded-2xl w-11 h-11 border border-gray-400 flex items-center justify-center"
-            style={{
-              boxShadow: '0 4px 6px rgba(66, 153, 225, 0.5)',
-            }}
+            className="bg-white w-11 h-11 border border-gray-400 flex items-center justify-center rounded-[30px] shadow-md hover:shadow-lg transform transition-all hover:scale-105"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -113,7 +107,8 @@ const Header = ({ back }) => {
             </svg>
           </div>
 
-          <div className="rounded-full w-11 h-11 overflow-hidden ml-2">
+          {/* Profile Image */}
+          <div className="rounded-full w-11 h-11 overflow-hidden ml-2 shadow-md hover:shadow-lg transform transition-all hover:scale-105">
             <img
               src="https://images.pexels.com/photos/3131971/pexels-photo-3131971.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               alt="Profile"

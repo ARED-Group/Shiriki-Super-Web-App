@@ -1,42 +1,46 @@
 import React, { useContext, useState, useEffect } from "react";
-import { Slide, Zoom } from "react-slideshow-image";
 import { Link, useNavigate } from "react-router-dom";
 import AdModal from "../Components/AdModal/AdModal";
 import { TimeContext } from "../context/WifiTimeContext";
+import { FaRegClipboard, FaConciergeBell, FaTv, FaUsers, FaGlobe, FaGamepad } from 'react-icons/fa'; // FontAwesome icons
 
-import "react-slideshow-image/dist/styles.css";
-import queue from "../assets/images/Queue.png";
-import restaurant from "../assets/images/restaurant.jpeg";
-import survey from "../assets/images/survey.webp";
-import entertainment from "../assets/images/entertainment.jpeg";
-import plan from "../assets/images/plan.jpeg";
-import learning from "../assets/images/learning.jpeg";
-import recommendation from "../assets/images/recommendation.jpeg";
-import live from "../assets/images/live.jpeg";
+// Utility to shuffle an array
+const shuffleArray = (array) => array.sort(() => Math.random() - 0.5);
 
-const slideImages = [
-  { url: restaurant, caption: "Restaurants", link: "/services/restaurant" },
-  { url: queue, caption: "Queue System", link: "/queue" },
-  { url: survey, caption: "Survey", link: "/survey" },
-  { url: entertainment, caption: "Entertainment", link: "/services/entertainment" },
+const pastelColors = [
+  "#FAD02E", // Yellow
+  "#F28D35", // Orange
+  "#D83367", // Pink
+  "#6C5B7B", // Purple
+  '#6A4C93'
 ];
 
-const newFeatures = [
-  { url: plan, caption: "Meal Planning" },
-  { url: learning, caption: "Gamified Learning" },
-  { url: recommendation, caption: "Restaurant Recommendations" },
-  { url: live, caption: "Live Coaching" },
-];
+const slideImages = shuffleArray([
+  { icon: <FaConciergeBell size={40} color={pastelColors[0]} />, caption: "Restaurants", link: "/services/restaurant" },
+  { icon: <FaUsers size={40} color={pastelColors[1]} />, caption: "Queue System", link: "/queue" },
+  { icon: <FaRegClipboard size={40} color={pastelColors[2]} />, caption: "Survey", link: "/survey" },
+  { icon: <FaTv size={40} color={pastelColors[3]} />, caption: "Entertainment", link: "/services/entertainment" },
+]);
+
+const newFeatures = shuffleArray([
+  { 
+    icon: <FaGlobe size={40} color={pastelColors[4]} />,  // Icon for Arena 3D Map
+    caption: "Arena 3D Map" 
+  },
+  { 
+    icon: <FaGamepad size={40} color={pastelColors[1]} />,  // Icon for Games
+    caption: "Games" 
+  },
+]);
 
 const HomeScreen = () => {
   const navigate = useNavigate();
   const { isConnected } = useContext(TimeContext);
   const [showAd, setShowAd] = useState(false);
 
-  // Plain JavaScript Cookie Functions
   const setCookie = (name, value, minutes) => {
     const now = new Date();
-    now.setTime(now.getTime() + minutes * 60 * 1000); // Convert minutes to milliseconds
+    now.setTime(now.getTime() + minutes * 60 * 1000);
     const expires = "expires=" + now.toUTCString();
     document.cookie = `${name}=${value};${expires};path=/`;
   };
@@ -59,79 +63,67 @@ const HomeScreen = () => {
 
   const handleCloseAd = () => {
     setShowAd(false);
-    setCookie("AdViewed", "true", 30); // Set cookie to expire in 30 minutes
+    setCookie("AdViewed", "true", 30);
     navigate("/services");
   };
 
   return (
-    <div 
-    className="min-h-screen"
-    style={{ background: 'linear-gradient(to bottom right, #f0f4f8, #d9e8fc)', padding: '20px' }}>
-      {/* Start Your Journey Section */}
+    <div className="min-h-screen bg-white relative overflow-hidden">
+      {/* Curved Top Background */}
       <div
-  style={{
-    overflowY: "scroll",
-    padding: '20px',
-    boxShadow: 'inset 0 4px 6px rgba(0, 0, 0, 0.1)',
-    background: "white",
-  }}
-  className="rounded-xl shadow-lg"
->
-        <div className="mt-8 px-1 ">
-          <h2  className="text-2xl text-dark font-bold">
-            Start Your Journey
-          </h2>
-          <Slide slidesToScroll={3} slidesToShow={3} arrows={false}>
-            {slideImages.map((slideImage, index) => (
-              <Link to={slideImage.link} className="cursor-pointer mx-2" key={index}>
-                <div className="relative group w-32 h-48 rounded-xl overflow-hidden">
-                  <div
-                    className="w-full h-full bg-cover bg-center"
-                    style={{ backgroundImage: `url(${slideImage.url})` }}
-                  ></div>
-                  <div className="absolute inset-0 flex items-center justify-center px-4 text-center bg-black bg-opacity-50">
-                    <span className="text-white text-sm font-semibold">{slideImage.caption}</span>
+        className="absolute top-0 left-0 w-full h-60 rounded-b-[70%]"
+        style={{
+          background: 'linear-gradient(to right, #3B82F6 , #1D4ED8)', // Gradient from blue to light blue
+        }}
+      ></div>
+
+      <div className="relative z-10 p-1">
+        {/* Start Your Journey Section */}
+        <div className="p-3 mb-6">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Start Your Journey</h2>
+          <div className="rounded-xl  shadow-lg p-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              {slideImages.map((slideImage, index) => (
+                <Link to={slideImage.link} key={index} className="group cursor-pointer">
+                  <div className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform transition-transform duration-300 group-hover:scale-105">
+                    <div className="w-full h-40 flex justify-center items-center bg-white">
+                      {slideImage.icon}
+                    </div>
+                    <div className="p-3 bg-gray-100 text-center">
+                      <span className="text-lg font-semibold">{slideImage.caption}</span>
+                    </div>
                   </div>
-                  <div className="absolute inset-0 bg-black bg-opacity-60 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Latest Additions Section */}
+        <div className="p-6 mb-6">
+          <h2 className="text-3xl font-bold text-gray-800 mb-4">Latest Additions</h2>
+          <div className="rounded-xl  shadow-lg p-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-6">
+              {newFeatures.map((feature, index) => (
+                <div
+                  key={index}
+                  className="rounded-xl overflow-hidden shadow-lg hover:shadow-2xl transform transition-transform duration-300 hover:scale-105"
+                >
+                  <div className="w-full h-40 flex justify-center items-center bg-white">
+                    {feature.icon} {/* Render the icon */}
+                  </div>
+                  <div className="p-3 bg-white text-center">
+                    <span className="text-lg font-semibold">{feature.caption}</span>
+                  </div>
                 </div>
-              </Link>
-            ))}
-          </Slide>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Latest Additions Section */}
-      <div
-  style={{
-    background:'white',
-    overflowY: "scroll",
-    padding: '20px',
-    boxShadow: 'inset 0 4px 6px rgba(0, 0, 0, 0.1)',
-  }}
-  className="rounded-xl shadow-lg mt-4"
->
-        <h2 className="text-2xl text-rgba(18, 50, 75, 0.5) font-bold mb-4">Latest Additions</h2>
-        <Zoom slidesToScroll={1} scale={0.8} slidesToShow={1} arrows={true}>
-          {newFeatures.map((slideImage, index) => (
-            <div key={index} className="flex justify-center items-center">
-              <div
-                className="relative w-80 h-48 rounded-xl bg-cover bg-center overflow-hidden shadow-2xl transition-all transform hover:scale-105 hover:shadow-2xl"
-                style={{ backgroundImage: `url(${slideImage.url})` }}
-              >
-                <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-80"></div>
-                <div className="absolute bottom-0 w-full px-4 py-2 text-center text-white bg-opacity-60">
-                  <h3 className="text-lg font-semibold">{slideImage.caption}</h3>
-                </div>
-              </div>
-            </div>
-          ))}
-        </Zoom>
-      </div>
-
-      {/* Ad Model */}
-      {showAd && (
-        <AdModal onClose={handleCloseAd} />
-      )}
+      {/* Ad Modal */}
+      {showAd && <AdModal onClose={handleCloseAd} />}
     </div>
   );
 };

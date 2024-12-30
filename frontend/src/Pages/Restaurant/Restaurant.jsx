@@ -27,7 +27,6 @@ import sundaeImage from "../../assets/images/Sundae.jpg";
 import chocolatefudgeImage from "../../assets/images/Chocolate Fudge.jpg";
 import strawberryscoopImage from "../../assets/images/Strawberry Scoop.jpg";
 
-
 const Restaurant = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
 
@@ -57,7 +56,6 @@ const Restaurant = () => {
         description: "Toasted bread topped with fresh avocado.",
         rating: 4.6,
       },
-      
       {
         id: 12,
         name: "Oatmeal Bowl",
@@ -83,179 +81,166 @@ const Restaurant = () => {
         rating: 4.4,
       },
     ],
-    Lunch: [
+    Burgers: [
       {
         id: 3,
         name: "Whopper",
         price: "$6.99",
         img: whooperImage,
-        description: "Flame-grilled beef patty with fresh toppings.",
-        rating: 4.6,
+        description: "Classic flame-grilled beef patty with lettuce, tomato, and pickles.",
+        rating: 4.8,
       },
       {
         id: 4,
         name: "Chicken Sandwich",
         price: "$5.99",
         img: chickensandwichImage,
-        description: "Crispy chicken fillet with lettuce and mayo.",
-        rating: 4.4,
+        description: "Crispy chicken fillet with mayo and lettuce.",
+        rating: 4.6,
       },
+    ],
+    Salads: [
       {
-        id: 15,
+        id: 5,
         name: "Caesar Salad",
         price: "$4.99",
         img: ceasarsaladImage,
-        description: "Fresh romaine lettuce with Caesar dressing.",
+        description: "Crisp romaine lettuce with Caesar dressing and croutons.",
         rating: 4.7,
       },
       {
-        id: 16,
-        name: "Grilled Cheese Sandwich",
-        price: "$3.99",
-        img: grilledcheesesandwichImage,
-        description: "Toasty bread with melted cheese inside.",
+        id: 6,
+        name: "Veggie Wrap",
+        price: "$4.49",
+        img: veggiewrapimage,
+        description: "Fresh vegetables wrapped in a soft tortilla.",
+        rating: 4.4,
+      },
+    ],
+    Sides: [
+      {
+        id: 7,
+        name: "French Fries",
+        price: "$2.49",
+        img: frenchfriesImage,
+        description: "Crispy golden fries served with ketchup.",
+        rating: 4.5,
+      },
+      {
+        id: 8,
+        name: "Onion Rings",
+        price: "$2.99",
+        img: onionringsImage,
+        description: "Crispy battered onion rings.",
         rating: 4.6,
       },
       {
-        id: 17,
-        name: "Spaghetti Bolognese",
-        price: "$7.99",
-        img: spaghettiImage,
-        description: "Classic spaghetti with rich meat sauce.",
-        rating: 4.8,
+        id: 9,
+        name: "Chips & Salsa",
+        price: "$1.99",
+        img: chipsandsalsaImage,
+        description: "Tortilla chips served with fresh salsa.",
+        rating: 4.4,
       },
       {
-        id: 18,
-        name: "Veggie Wrap",
-        price: "$5.49",
-        img: veggiewrapimage,
-        description: "Fresh veggies wrapped in a tortilla.",
+        id: 10,
+        name: "Pretzels",
+        price: "$3.49",
+        img: pretzelsImage,
+        description: "Soft and salty pretzels.",
         rating: 4.5,
       },
     ],
     Snacks: [
       {
-        id: 5,
-        name: "French Fries",
-        price: "$2.49",
-        img: frenchfriesImage,
-        description: "Golden and crispy fries.",
-        rating: 4.8,
-      },
-      {
-        id: 6,
-        name: "Onion Rings",
-        price: "$3.49",
-        img: onionringsImage,
-        description: "Crispy onion rings with dipping sauce.",
-        rating: 4.5,
-      },
-      {
-        id: 19,
+        id: 15,
         name: "Mozzarella Sticks",
-        price: "$4.49",
+        price: "$4.99",
         img: mozzarellasticksImage,
-        description: "Cheesy mozzarella sticks with marinara.",
+        description: "Golden fried mozzarella sticks served with marinara sauce.",
         rating: 4.7,
       },
       {
-        id: 20,
-        name: "Chips & Salsa",
-        price: "$2.99",
-        img: chipsandsalsaImage,
-        description: "Crispy tortilla chips with fresh salsa.",
-        rating: 4.6,
-      },
-      {
-        id: 21,
-        name: "Pretzels",
-        price: "$3.29",
-        img: pretzelsImage,
-        description: "Warm and soft pretzels with salt.",
-        rating: 4.5,
-      },
-      {
-        id: 22,
+        id: 16,
         name: "Popcorn",
-        price: "$1.99",
+        price: "$1.49",
         img: popcornImage,
-        description: "Buttery and fresh popcorn.",
-        rating: 4.4,
+        description: "Freshly popped popcorn.",
+        rating: 4.3,
       },
     ],
     Drinks: [
       {
-        id: 7,
+        id: 17,
         name: "Coke",
         price: "$1.99",
         img: cokeImage,
-        description: "Refreshing soft drink.",
-        rating: 4.3,
+        description: "Classic Coca-Cola.",
+        rating: 4.6,
       },
       {
-        id: 8,
+        id: 18,
         name: "Milkshake",
         price: "$3.99",
         img: milkshakeImage,
-        description: "Thick and creamy milkshake.",
-        rating: 4.6,
-      },
-      {
-        id: 23,
-        name: "Iced Tea",
-        price: "$2.49",
-        img: icedteaImage,
-        description: "Cool and refreshing iced tea.",
-        rating: 4.5,
-      },
-      {
-        id: 24,
-        name: "Smoothie",
-        price: "$4.99",
-        img: smoothieImage,
-        description: "Fruity and healthy smoothie.",
-        rating: 4.7,
-      },
-    ],
-    IceCream: [
-      {
-        id: 9,
-        name: "Vanilla Cone",
-        price: "$1.49",
-        img: vanillaconeImage,
-        description: "Classic vanilla ice cream cone.",
-        rating: 4.7,
-      },
-      {
-        id: 10,
-        name: "Sundae",
-        price: "$2.99",
-        img: sundaeImage,
-        description: "Rich sundae with chocolate syrup.",
+        description: "Creamy milkshake in chocolate, vanilla, or strawberry.",
         rating: 4.8,
       },
       {
-        id: 27,
-        name: "Chocolate Fudge",
-        price: "$3.99",
-        img: chocolatefudgeImage,
-        description: "Decadent chocolate fudge ice cream.",
+        id: 19,
+        name: "Iced Tea",
+        price: "$2.49",
+        img: icedteaImage,
+        description: "Chilled iced tea served with lemon.",
+        rating: 4.5,
+      },
+      {
+        id: 20,
+        name: "Smoothie",
+        price: "$3.49",
+        img: smoothieImage,
+        description: "Fresh fruit smoothie with a choice of flavors.",
+        rating: 4.7,
+      },
+    ],
+    Desserts: [
+      {
+        id: 21,
+        name: "Vanilla Cone",
+        price: "$1.99",
+        img: vanillaconeImage,
+        description: "Creamy vanilla ice cream in a cone.",
         rating: 4.6,
       },
       {
-        id: 28,
+        id: 22,
+        name: "Sundae",
+        price: "$2.99",
+        img: sundaeImage,
+        description: "Classic sundae with chocolate syrup.",
+        rating: 4.7,
+      },
+      {
+        id: 23,
+        name: "Chocolate Fudge",
+        price: "$3.49",
+        img: chocolatefudgeImage,
+        description: "Rich chocolate fudge cake.",
+        rating: 4.8,
+      },
+      {
+        id: 24,
         name: "Strawberry Scoop",
         price: "$2.49",
         img: strawberryscoopImage,
-        description: "Fresh strawberry-flavored ice cream.",
+        description: "Fresh strawberry ice cream scoop.",
         rating: 4.5,
       },
     ],
   };
-  
 
   return (
-    <div className="bg-gradient-to-br from-[#f0f4f8] to-[#d9e8fc] min-h-screen py-12 px-4 sm:px-6 lg:px-8">
+    <div className="bg-white min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
           <p className="text-3xl font-extrabold text-gray-800 tracking-tight">
@@ -271,7 +256,7 @@ const Restaurant = () => {
             <button
               key={category}
               onClick={() => setSelectedCategory(category)}
-              className={`px-6 py-3 rounded-lg shadow-md transition-transform duration-300 ${
+              className={`px-6 py-3 rounded-[0.5rem] shadow-md transition-transform duration-300 ${
                 selectedCategory === category
                   ? "bg-blue-600 text-white shadow-lg"
                   : "bg-white text-blue-600 border border-blue-600"
@@ -287,40 +272,60 @@ const Restaurant = () => {
             <h2 className="text-2xl font-bold text-gray-800 mb-6">
               {selectedCategory}
             </h2>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
-  {menuCategories[selectedCategory].map((item) => (
-    <div
-      key={item.id}
-      className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
-    >
-      <div className="relative">
-        <img
-          src={item.img}
-          alt={item.name}
-          className="w-full h-40 object-cover"
-        />
-        <div className="absolute top-2 right-2 flex items-center space-x-1 bg-white bg-opacity-90 px-2 py-1 rounded-full text-sm">
-          <Star className="text-yellow-500 w-4 h-4" fill="currentColor" />
-          <span className="text-gray-800 font-semibold">{item.rating}</span>
-        </div>
-      </div>
-      <div className="p-3">
-        <div className="flex justify-between items-center mb-2">
-          <h2 className="text-lg font-bold text-gray-800">{item.name}</h2>
-          <span className="text-base font-semibold text-gray-600">
-            {item.price}
-          </span>
-        </div>
-        <p className="text-sm text-gray-600 mb-4">{item.description}</p>
-        <button className="w-full flex items-center justify-center bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-colors">
-          <ShoppingCart className="mr-2 w-4 h-4" />
-          Add to Cart
-        </button>
-      </div>
-    </div>
-  ))}
-</div>
+            <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              {menuCategories[selectedCategory].map((item) => (
+                <div
+                  key={item.id}
+                  className="bg-white rounded-lg shadow-md overflow-hidden transform transition-all duration-300 hover:scale-105 hover:shadow-lg"
+                >
+                  <div className="relative">
+                    <img
+                      src={item.img}
+                      alt={item.name}
+                      className="w-full h-40 object-cover"
+                    />
+                    <div className="absolute top-2 right-2 flex items-center space-x-1 bg-white bg-opacity-90 px-2 py-1 rounded-full text-sm">
+                      <Star className="text-yellow-500 w-4 h-4" fill="currentColor" />
+                      <span className="text-gray-800 font-semibold">
+                        {item.rating}
+                      </span>
+                    </div>
+                  </div>
+                  <div className="p-3">
+ 
+  
+               <div className="flex justify-between grid-cols-2 items-center mb-2">
+               <div className="truncate">  
+                    <h2
+                      className="text-md font-bold text-gray-800 truncate"
+                      title={item.name}
+                    >
+                      {item.name}
+                    </h2>
+               </div>
+               <div>
+                    <span className="text-gray-600 text-sm font-semibold ml-2">
+                      {item.price}
+                    </span>
+               </div>
+                  </div>
 
+                    <p
+                      className="text-gray-600 text-sm truncate"
+                      title={item.description}
+                    >
+                      {item.description}
+                    </p>
+                    <div className="mt-4 flex justify-between items-center">
+                    <button className="flex items-center rounded-[0.5rem] bg-blue-600 text-white hover:text-blue-800 px-2.5">
+                        <ShoppingCart className="w-4 h-4 mr-1" />
+                        Add to Cart
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         )}
       </div>

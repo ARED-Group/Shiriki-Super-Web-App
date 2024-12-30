@@ -56,11 +56,11 @@ const SurveyForm = () => {
                     className="px-6 pb-8 space-y-6 animate-ease-in-up"
                 >
                     {/* Header */}
-                    <div className="text-center mb-6">
-                        <h1 className="text-2xl font-bold text-gray-600 mb-2">
+                    <div className="text-center mb-6 bg-blue-600 rounded-[1.5rem] p-3">
+                        <h1 className="text-2xl font-bold text-white mb-2">
                             User Experience Survey
                         </h1>
-                        <p className="text-gray-500 text-sm max-w-md mx-auto">
+                        <p className="text-white text-sm max-w-md mx-auto">
                             Help us improve your experience by answering a few quick questions.
                         </p>
                     </div>
@@ -76,11 +76,11 @@ const SurveyForm = () => {
                                     key={option} 
                                     className={`
                                         flex items-center justify-center 
-                                        p-3 rounded-lg cursor-pointer 
+                                        p-3 rounded-[1.5rem] cursor-pointer 
                                         border-2 transition-all duration-300
                                         ${formData.satisfaction === option 
-                                            ? "bg-indigo-100 border-indigo-500 text-indigo-700" 
-                                            : "border-gray-200 hover:border-indigo-300"}`}
+                                            ? "bg-blue-100 border-blue-500 text-blue-700" 
+                                            : "border-gray-200 hover:border-blue-300"}`}
                                 >
                                     <input
                                         type="radio"
@@ -106,11 +106,11 @@ const SurveyForm = () => {
                                     key={feature} 
                                     className={`
                                         flex items-center justify-center 
-                                        p-3 rounded-lg cursor-pointer 
+                                        p-3 rounded-[1.5rem] cursor-pointer 
                                         border-2 transition-all duration-300
                                         ${formData.favoriteFeature.includes(feature) 
-                                            ? "bg-indigo-100 border-indigo-500 text-indigo-700" 
-                                            : "border-gray-200 hover:border-indigo-300"}`}
+                                            ? "bg-blue-100 border-blue-500 text-blue-700" 
+                                            : "border-gray-200 hover:border-blue-300"}`}
                                 >
                                     <input
                                         type="checkbox"
@@ -140,7 +140,7 @@ const SurveyForm = () => {
                             name="improvement"
                             value={formData.improvement}
                             onChange={handleChange}
-                            className="w-full p-3 border-2 border-blue-500 rounded-lg focus:border-indigo-500 focus:ring-2 focus:ring-blue-400 transition-all duration-300"
+                            className="w-full p-3 border-2 border-blue-500 rounded-[1.5rem] focus:border-indigo-500 focus:ring-2 focus:ring-blue-400 transition-all duration-300"
                         >
                             <option value="" disabled>Select an option</option>
                             <option value="Faster Loading Times">Faster Loading Times</option>
@@ -161,11 +161,11 @@ const SurveyForm = () => {
                                     key={age} 
                                     className={`
                                         flex items-center justify-center 
-                                        p-3 rounded-lg cursor-pointer 
+                                        p-3 rounded-[1.5rem] cursor-pointer 
                                         border-2 transition-all duration-300
                                         ${formData.ageGroup === age 
-                                            ? "bg-indigo-100 border-indigo-500 text-indigo-700" 
-                                            : "border-gray-200 hover:border-indigo-300"}`}
+                                            ? "bg-blue-100 border-blueo-500 text-blue-700" 
+                                            : "border-gray-200 hover:border-blue-300"}`}
                                 >
                                     <input
                                         type="radio"
@@ -182,7 +182,7 @@ const SurveyForm = () => {
 
                     {/* Feedback Question */}
                     <div className="space-y-3">
-                        <label className="block text-gray-700 font-semibold mb-2">
+                        <label className="block text-gray-700 font-semibold rounded-[1.5rem] mb-2">
                             Any additional feedback or suggestions?
                         </label>
                         <textarea
@@ -191,14 +191,14 @@ const SurveyForm = () => {
                             onChange={handleChange}
                             rows="4"
                             placeholder="Type your feedback here..."
-                            className="w-full p-3 border-2 border-blue-500 rounded-lg focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 resize-none"
+                            className="w-full p-3 border-2 border-blue-500 rounded-[1.5rem] focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition-all duration-300 resize-none"
                         ></textarea>
                     </div>
 
                     {/* Submit Button */}
                     <button
                         type="submit"
-                        className="w-full bg-indigo-600 text-white py-3 rounded-lg font-semibold 
+                        className="w-full bg-blue-600 text-white py-3 rounded-[1.5rem] font-semibold 
                         shadow-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 
                         transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
                     >

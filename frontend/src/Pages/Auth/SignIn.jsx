@@ -15,9 +15,9 @@ const SignIn = () => {
                 fontFamily: "'Inter', sans-serif",
                 background: "linear-gradient(to bottom right, #f0f4f8, #d9e8fc)",
             }}
-            className="min-h-screen flex items-center justify-center px-4"
+            className="min-h-screen rounded-[1.5rem] flex items-center justify-center px-4"
         >
-            <div className="max-w-md w-full bg-white shadow-2xl rounded-3xl p-8 text-center">
+            <div className="max-w-md w-full bg-white shadow-2xl rounded-6xl p-8 text-center">
                 <div className="flex items-center justify-between mb-6">
                     <div className="pr-3 cursor-pointer" onClick={goBack}>
                         <svg
@@ -63,7 +63,7 @@ const SignIn = () => {
                         <input
                             type="email"
                             placeholder="Your email address"
-                            className="w-full border-gray-300 pl-12 pr-4 py-3 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition transform hover:translate-y-[-2px] hover:shadow-lg ease-in-input"
+                            className="w-full border-gray-300 pl-12 pr-4 py-3 border rounded-[1.5rem] shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition transform hover:translate-y-[-2px] hover:shadow-lg ease-in-input"
                         />
                     </div>
                     <div className="relative">
@@ -86,13 +86,13 @@ const SignIn = () => {
                         <input
                             type="password"
                             placeholder="Password"
-                            className="w-full border-gray-300 pl-12 pr-4 py-3 border rounded-lg shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition transform hover:translate-y-[-2px] hover:shadow-lg ease-in-input"
+                            className="w-full border-gray-300 pl-12 pr-4 py-3 border rounded-[1.5rem] shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition transform hover:translate-y-[-2px] hover:shadow-lg ease-in-input"
                         />
                     </div>
                     <button
                         type="submit"
                         onClick={toProfile}
-                        className="w-full py-3 bg-blue-500 text-white font-medium rounded-lg shadow-md hover:bg-blue-600 transform hover:translate-y-[-2px] hover:shadow-lg transition pulse-continuous"
+                        className="w-full py-3 bg-blue-500 text-white font-medium rounded-[1.5rem] shadow-md hover:bg-blue-600 transform hover:translate-y-[-2px] hover:shadow-lg transition pulse-continuous"
                     >
                         Continue
                     </button>

@@ -53,7 +53,7 @@ const QueueDetails = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col">
+    <div className="bg-gradient-to-br from-blue-50 to-gray-100 flex flex-col w-full">
       {/* Header */}
       <Header />
 
@@ -89,7 +89,7 @@ const QueueDetails = () => {
               <div className="flex justify-center mt-6">
                 <button
                   onClick={() => handleJoinQueue(service)}
-                  className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-lg font-semibold text-sm transition"
+                  className="bg-blue-500 hover:bg-blue-600 text-white py-2 px-6 rounded-[1.5rem] font-semibold text-sm transition"
                 >
                   Join Queue
                 </button>

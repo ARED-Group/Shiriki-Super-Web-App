@@ -8,21 +8,20 @@ const Queue = () => {
   const navigate = useNavigate();
 
   const handleNext = () => {
-      navigate("/queue-details");
+    navigate("/queue-details");
   };
 
   return (
     <div
-  className="min-h-screen bg-gray-100"
-  style={{
-    background: 'linear-gradient(to bottom right, #f0f4f8, #d9e8fc)',
-    padding: '5px',
-  }}
->
+      className="min-h-screen bg-white"
+      style={{
+        padding: '5px',
+      }}
+    >
       <Header />
-      <div className="flex flex-col lg:flex-row items-center justify-center h-full">
+      <div className="flex flex-col lg:flex-row items-center justify-center h-full w-full">
         <div className="flex-1 p-8 lg:p-16">
-          <p  className="text-dark mb-8 text-3xl">
+          <p className="text-dark mb-8 text-3xl">
             Welcome to our Queue
           </p>
           <div className="w-full h-96 mt-10 lg:mt-20">
@@ -36,7 +35,7 @@ const Queue = () => {
             onClick={handleNext}
             variant="contained"
             color="primary"
-            className="mt-8"
+            className="bg-blue-600 hover:bg-blue-600 text-white py-2 px-6 rounded-[1.5rem] font-semibold text-sm transition"
           >
             Next
             <svg

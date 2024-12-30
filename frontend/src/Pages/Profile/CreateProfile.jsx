@@ -19,7 +19,7 @@ const CreateProfile = () => {
 
     return (
         <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-300 flex items-center justify-center">
-            <div className="bg-white rounded-3xl shadow-2xl p-8 w-full max-w-lg transition-all duration-500 ease-in-out">
+            <div className="bg-white rounded-lg shadow-2xl p-8 w-full max-w-lg transition-all duration-500 ease-in-out">
                 <div className="flex items-center mb-6">
                     <span
                         onClick={goBack}
@@ -97,7 +97,7 @@ const CreateProfile = () => {
                             key={placeholder}
                             type="text"
                             placeholder={placeholder}
-                            className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ease-in-out transform hover:scale-105"
+                            className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300 ease-in-out transform hover:scale-105"
                             style={{
                                 boxShadow:
                                     "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
@@ -118,7 +118,7 @@ const CreateProfile = () => {
 
                 <Link
                     to="/services"
-                    className="block w-full text-center py-4 rounded-lg mt-8 font-semibold text-white shadow-lg transform hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out"
+                    className="block w-full text-center py-4 rounded-[1.5rem] mt-8 font-semibold text-white shadow-lg transform hover:scale-105 hover:shadow-xl transition-all duration-300 ease-in-out"
                     style={{
                         boxShadow:
                           "0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)",

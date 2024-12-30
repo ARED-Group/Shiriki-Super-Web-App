@@ -22,7 +22,7 @@ const SignUp = () => {
       transition={{ duration: 0.5 }} // Animation duration
     >
       <motion.div
-        className="max-w-md w-full bg-white shadow-2xl rounded-3xl p-8 text-center"
+        className="max-w-md w-full bg-white shadow-2xl rounded-[1.5rem] p-8 text-center"
         initial={{ y: -100, opacity: 0 }} // Initial position and opacity
         animate={{ y: 0, opacity: 1 }} // Final position and opacity
         transition={{ duration: 0.5 }}
@@ -62,7 +62,7 @@ const SignUp = () => {
             <input
               type="text"
               placeholder="Full Name"
-              className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border-gray-300 pl-12 pr-4 py-3 border rounded-[1.5rem] shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition transform hover:translate-y-[-2px] hover:shadow-lg ease-in-input"
               style={{
                 boxShadow:
                   "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
@@ -85,7 +85,7 @@ const SignUp = () => {
             <input
               type="email"
               placeholder="Email Address"
-              className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full border-gray-300 pl-12 pr-4 py-3 border rounded-[1.5rem] shadow-md focus:outline-none focus:ring-2 focus:ring-blue-500 transition transform hover:translate-y-[-2px] hover:shadow-lg ease-in-input"
               style={{
                 boxShadow:
                   "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
@@ -108,7 +108,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="Password"
-              className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] focus:outline-none focus:ring-2 focus:ring-blue-500"
               style={{
                 boxShadow:
                   "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
@@ -131,7 +131,7 @@ const SignUp = () => {
             <input
               type="password"
               placeholder="Confirm Password"
-              className="w-full pl-12 pr-4 py-3 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className="w-full pl-12 pr-4 py-3 rounded-[1.5rem] focus:outline-none focus:ring-2 focus:ring-blue-500"
               style={{
                 boxShadow:
                   "0 4px 6px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.06)",
@@ -148,14 +148,12 @@ const SignUp = () => {
           <motion.button
             type="submit"
             onClick={toProfile}
-            className="w-full py-3 text-white font-medium rounded-lg"
+            className="w-full py-3 text-white font-medium rounded-[1.5rem] bg-blue-600"
             style={{
               boxShadow:
                 "0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)",
-              background: "linear-gradient(to bottom, #4299e1, #3182ce)",
               transition: "transform 0.2s ease, box-shadow 0.2s ease",
             }}
-            
             animate={{ opacity: 1, scale: [1, 1.01, 1] }} // Mild pulse effect
             transition={{
               duration: 0.8,

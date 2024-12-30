@@ -76,11 +76,10 @@ const WifiService = () => {
         <button
           type="button"
           onClick={toServices}
-          className="w-full py-3  text-white font-semibold rounded-lg shadow-md hover:shadow-lg transform hover:scale-105 transition"
+          className="w-full py-3  text-white font-semibold rounded-[1.5rem] bg-blue-600 shadow-md hover:shadow-lg transform hover:scale-105 transition"
           style={{
             boxShadow:
               "0 6px 10px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.12)",
-            background: "linear-gradient(to bottom, #4299e1, #3182ce)",
             transition: "transform 0.2s ease, box-shadow 0.2s ease",
           }}
         >

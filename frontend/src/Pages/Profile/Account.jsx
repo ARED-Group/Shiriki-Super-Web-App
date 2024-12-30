@@ -36,34 +36,34 @@ const Account = () => {
 
             {/* Menu Items */}
             <div className="space-y-4">
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
                     <span className="text-gray-900 text-lg">Account Preferences</span>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
                     <span className="text-gray-900 text-lg">Privacy and Security</span>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
                     <Link  className="text-gray-900 text-lg">Payment Method</Link>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
                     <Link to="/feedback" className="text-gray-900 text-lg">Give Feedback</Link>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all">
                     <span className="text-gray-900 text-lg">Additional Settings</span>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all flex justify-between items-center">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all flex justify-between items-center">
                     <span className="text-gray-900 text-lg">Light Mode</span>
-                    <div className="toggle-switch">
+                    <div className="toggle-switch ">
                         <ToggleOnIcon />
                     </div>
                 </div>
 
-                <div className="bg-white p-4 rounded-xl shadow-lg hover:shadow-2xl hover:scale-105 transition-all flex justify-between items-center">
+                <div className="bg-white p-4 rounded-[1.5rem] shadow-lg hover:shadow-2xl hover:scale-105 transition-all flex justify-between items-center">
                     <span className="text-gray-900 text-lg">Data Saver</span>
                     <div className="toggle-switch">
                         <ToggleOffIcon />
@@ -76,11 +76,11 @@ const Account = () => {
                 <input
                     type="text"
                     placeholder="Enter text"
-                    className="w-full p-3 rounded-lg border-2 border-blue-500 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
+                    className="w-full p-3 rounded-[1.5rem] border-2 border-blue-500 bg-white shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-300 transition-all"
                 />
                 <button
                     onClick={handleSubmit}
-                    className="w-full mt-4 p-3 rounded-lg bg-blue-500 text-white shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-blue-600 transition-all"
+                    className="w-full mt-4 p-3 rounded-[1.5rem] bg-blue-600 text-white shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-blue-600 transition-all"
                 >
                     Submit
                 </button>

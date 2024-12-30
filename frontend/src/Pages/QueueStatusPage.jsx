@@ -182,6 +182,7 @@ const QueueStatusPage = () => {
             }}
           >
             <Button
+             className="rounded-[1.5rem]"
               variant="contained"
               onClick={goBack}
               sx={{
@@ -194,6 +195,7 @@ const QueueStatusPage = () => {
             </Button>
 
             <Button
+            className="rounded-[1.5rem]"
               variant="contained"
               onClick={getTicket}
               sx={{
