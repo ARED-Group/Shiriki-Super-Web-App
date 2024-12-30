@@ -1,22 +1,19 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { FaCheckCircle } from "react-icons/fa";
 import { useForm } from "react-hook-form";
-import md5 from "md5";
-// import axios from "axios"; // Import Axios
-import { TimeContext } from "../../context/WifiTimeContext";
-
-import { Buffer } from "buffer";
+import successRefresh from "./../../assets/images/successRefreshToken.png";
 
 const steps = ["Enter Phone Number", "Submit Token", "Success"];
 
 const WifiTimeStepper = ({ onClose }) => {
   const [activeStep, setActiveStep] = useState(0);
-  const { stopTimer, startTimer } = useContext(TimeContext);
   const {
     register,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm();
+  const [token, setToken] = useState("");
 
   const handleNext = () => {
     if (activeStep === 0) {
@@ -34,66 +31,18 @@ const WifiTimeStepper = ({ onClose }) => {
 
   const onSubmitPhoneNumber = (data) => {
     console.log("Phone Number:", data.phoneNumber);
+    const generatedToken = "WIFI123456"; // For demo purposes
+    setToken(generatedToken);
     setActiveStep((prev) => prev + 1);
   };
 
-  const onSubmitToken = async (data) => {
-    const challenge = "hardcodedchallenge"; // Replace with actual challenge value
-    const uamsecret = "greatsecret"; // Replace with your secret key
-    const userToken = data.token;
-
-    console.log("Submitted Token:", userToken);
-
-    // Debugging steps
-    const debug = [];
-    debug.push(`Step 1: Received token: ${userToken}`);
-    debug.push(`Step 2: Using hardcoded challenge: ${challenge}`);
-
-    // Generate the new challenge
-    const hexchal = Buffer.from(challenge, "hex");
-    debug.push(
-      `Step 3: Packed challenge (hexchal): ${hexchal.toString("hex")}`
-    );
-
-    const newchal = md5(hexchal + uamsecret);
-    debug.push(`Step 4: New challenge (newchal): ${newchal}`);
-
-    // Generate the response
-    const response = md5(`\0${userToken}${newchal}`);
-    debug.push(`Step 5: Generated response: ${response}`);
-
-    // Create the final URL
-    const url = new URL("http://192.168.182.1:4990/logon");
-    url.searchParams.append("username", userToken);
-    url.searchParams.append("response", response);
-    url.searchParams.append("userurl", ""); // Add userurl if needed
-    url.searchParams.append("challenge", challenge);
-
-    const maskedUrl = url.href.replace(/username=.*?&/, "username=MASKED&");
-    debug.push(`Step 6: Final URL (sensitive info masked): ${maskedUrl}`);
-
-    // Make Axios GET request
-    // try {
-    //   const response = await axios.get(url.href, {
-    //     headers: {
-    //       "X-Debug-Info": JSON.stringify(debug), // Pass debug info in a custom header
-    //     },
-    //   });
-    //   console.log("Server Response:", response.data);
-    //   debug.push(`Step 7: Server responded successfully.`);
-
-    // Move to success step
-    setActiveStep((prev) => prev + 1);
-
-    // } catch (error) {
-    //   console.log("Error during authentication request:", error);
-    //   console.log(url.href);
-    //   debug.push(`Step 7: Error - ${error.message}`);
-    //   alert("Authentication failed. Please try again.");
-    // }
-
-    // Optionally store debug info in sessionStorage for troubleshooting
-    sessionStorage.setItem("debugInfo", JSON.stringify(debug));
+  const onSubmitToken = (data) => {
+    console.log("Submitted Token:", data.token);
+    if (true) {
+      setActiveStep((prev) => prev + 1);
+    } else {
+      alert("Invalid token. Please try again.");
+    }
   };
 
   return (
@@ -156,9 +105,9 @@ const WifiTimeStepper = ({ onClose }) => {
               You are back online
             </p>
             <img
-              src="http://localhost:8080/images/successRefreshToken.png"
+              src={successRefresh}
               className="py-2"
-              alt="Success refresh token"
+              alt="Success refresh token image"
             />
             <button
               onClick={onClose}
